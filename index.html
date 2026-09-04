@@ -65,7 +65,7 @@
     </button>
     <div class="sound-volume-slider-box" id="volumeSliderBox">
       <i data-lucide="volume-2" style="width: 15px; height: 15px; color: var(--gold-color);"></i>
-      <input type="range" id="soundVolumeSlider" min="0" max="100" value="70" aria-label="ระดับเสียง" title="ปรับระดับเสียง">
+      <input type="range" id="soundVolumeSlider" min="0" max="100" value="18" aria-label="ระดับเสียง" title="ปรับระดับเสียง">
     </div>
   </div>
 
@@ -74,17 +74,16 @@
     <source src="assets/audio/bgm.mp3" type="audio/mpeg">
   </audio>
 
-    <!-- พื้นหลัง Parallax -->
-      <div class="parallax-container">
-    <div class="ingredient" data-speed="0.2"
-      style="top: 10%; right: 10%; width: 100px; height: 100px; background: #d35400; border-radius: 50%; filter: blur(40px);">
-    </div>
-    <div class="ingredient" data-speed="0.5"
-      style="top: 40%; left: 5%; width: 80px; height: 80px; background: #27ae60; border-radius: 50%; filter: blur(30px);">
-    </div>
-    <div class="ingredient" data-speed="0.1"
-      style="bottom: 20%; right: 20%; width: 150px; height: 150px; background: #c0392b; border-radius: 50%; filter: blur(50px);">
-    </div>
+  <!-- พื้นหลังสมุนไพรแบบหลายเลเยอร์ เคลื่อนตามการเลื่อนหน้า -->
+  <div class="parallax-container" aria-hidden="true">
+    <div class="herb-atmosphere"></div>
+    <span class="ingredient herb-leaf herb-leaf-a" data-speed="0.22"></span>
+    <span class="ingredient herb-leaf herb-leaf-b" data-speed="0.38"></span>
+    <span class="ingredient lemongrass" data-speed="0.28"></span>
+    <span class="ingredient chilli" data-speed="0.44"></span>
+    <span class="ingredient star-anise" data-speed="0.32">✦</span>
+    <span class="steam-wisp steam-wisp-a"></span>
+    <span class="steam-wisp steam-wisp-b"></span>
   </div>
 
   <div class="texture-overlay"></div>
@@ -92,11 +91,9 @@
   <!-- ========== PART 1 : TIMELINE HERO ========== -->
   <header class="hero-header">
     <div class="header-content">
-      <i data-lucide="utensils-crossed"
-        style="color: var(--gold-color); width: 64px; height: 64px; margin-bottom: 1rem;"></i>
       <h1 class="main-title">อาหารไทย...จากครัวบ้านสู่</h1>
       <h1 class="main-title">ครัวโลก</h1>
-      <p class="subtitle-hero">วิวัฒนาการอาหารไทยจากอดีตสู่สากล</p>
+      <p class="subtitle-hero">อดีตสู่ ปัจจุบัน</p>
     </div>
     <div class="scroll-indicator">
       <span>เลื่อนเพื่อชมประวัติศาสตร์</span>
@@ -106,8 +103,6 @@
 
   <!-- TIMELINE -->
   <div class="timeline-container">
-    <div class="golden-line"></div>
-
     <!-- CARD 1 -->
     <div class="card">
       <div class="card-image-wrapper">
@@ -233,14 +228,13 @@
     <!-- CARD 7 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <span class="flag-badge">🇹🇭</span>
         <img src="assets/images/t08.png" alt="Tom Yum Goong" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">ซุปต้มยำกุ้ง</h2>
         <div class="year-text">พ.ศ. 2520 – ปัจจุบัน</div>
         <div class="location-tag">
-          <i data-lucide="rocket" style="width: 16px;"></i> อาหารไทยสมัยใหม่สู่เวทีโลก
+          <i data-lucide="earth" style="width: 18px;"></i> อาหารไทยสมัยใหม่สู่เวทีโลก
         </div>
         <p class="card-desc">
           ยุค Globalization ที่ทำให้อาหารไทยโด่งดังระดับโลก
@@ -271,11 +265,11 @@
         <path id="path-us" class="route-path" d="M772,282 Q500,50 269,198" />
       </svg>
       <div class="marker loc-th"></div>
-      <div class="flag-icon loc-jp" id="flag-jp" data-flag="assets/images/flags/jp.svg"></div>
-      <div class="flag-icon loc-cn" id="flag-cn" data-flag="assets/images/flags/cn.svg"></div>
-      <div class="flag-icon loc-au" id="flag-au" data-flag="assets/images/flags/au.svg"></div>
-      <div class="flag-icon loc-fr" id="flag-fr" data-flag="assets/images/flags/fr.svg"></div>
-      <div class="flag-icon loc-us" id="flag-us" data-flag="assets/images/flags/us.svg"></div>
+      <div class="flag-icon loc-jp" id="flag-jp"><img src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น"></div>
+      <div class="flag-icon loc-cn" id="flag-cn"><img src="assets/images/flags/cn.svg" alt="ธงประเทศจีน"></div>
+      <div class="flag-icon loc-au" id="flag-au"><img src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย"></div>
+      <div class="flag-icon loc-fr" id="flag-fr"><img src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส"></div>
+      <div class="flag-icon loc-us" id="flag-us"><img src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา"></div>
     </div>
   </div>
 
@@ -285,13 +279,10 @@
   <!-- SCROLL SECTIONS FOR MAP JOURNEY -->
   <div class="scroll-container">
     <section class="section" id="sec-intro">
-      <div>
-        <h1
-          style="font-size: clamp(3rem, 8vw, 6rem); color: #ffdb58; line-height: 1; text-shadow: 0 0 20px rgba(238, 187, 77, 0.5);">
-          THAI TASTE<br>ODYSSEY</h1>
-        <div style="width: 100px; height: 2px; background: #ffdb58; margin: 20px auto;"></div>
-        <p style="font-size: 1.5rem; font-weight: 300;">การเดินทางของรสชาติไทยสู่สากล</p>
-        <p style="margin-top: 30px; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6;">SCROLL TO BEGIN JOURNEY</p>
+      <div class="map-intro-copy">
+        <p class="map-intro-kicker">จากครัวบ้านสู่ครัวโลก</p>
+        <h1>เส้นทางรสชาติไทย</h1>
+        <p class="map-intro-prompt">เลื่อนเพื่อเริ่มการเดินทาง</p>
       </div>
     </section>
 
@@ -303,7 +294,7 @@
             <h2 class="thai-header">รสไทยในแดนอูมามิ</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" alt="Japan">
+              <img src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น">
           </div>
         </div>
         <div class="card-body">
@@ -338,9 +329,7 @@
             <h2 class="thai-header">รสชาติไทยในตลาดที่โตเร็วที่สุด</h2>
           </div>
           <div class="flag-badge-map">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg"
-              alt="China">
+            <img src="assets/images/flags/cn.svg" alt="ธงประเทศจีน">
           </div>
         </div>
         <div class="card-body">
@@ -376,7 +365,7 @@
             <h2 class="thai-header">รสไทยในบ้านของชาวออสซี่</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg" alt="Australia">
+            <img src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย">
           </div>
         </div>
         <div class="card-body">
@@ -413,7 +402,7 @@
             <h2 class="thai-header">รสอาหารไทยในเมืองศิลปะ</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France">
+            <img src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส">
           </div>
         </div>
         <div class="card-body">
@@ -449,7 +438,7 @@
             <h2 class="thai-header">รสครัวไทยสู่ครัวโลก</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA">
+            <img src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา">
           </div>
         </div>
         <div class="card-body">
@@ -477,20 +466,23 @@
         </div>
       </div>
     </section>
-    
-</section>
 
     <section class="section" id="sec-outro">
-      <div>
-        <h2 style="font-size: 3rem; color: #ffdb58;">The Journey Continues</h2>
-        <div style="width: 50px; height: 2px; background: #fff; margin: 20px auto; opacity: 0.5;"></div>
-        <p class="thai-header" style="font-size: 1.25rem;">
-          อาหารไทย...เดินทางไปไกลทั่วโลก<br>แต่หัวใจยังคงอยู่ที่เดิม</p>
+      <div class="map-outro-card">
+        <div class="outro-visuals" aria-hidden="true">
+          <img src="assets/images/ผัดไทย.1.png" alt="">
+          <img src="assets/images/รูปต้มยำกุ้ง .png" alt="">
+        </div>
+        <div class="map-outro-copy">
+          <p class="map-intro-kicker">รสชาติที่เดินทางข้ามพรมแดน</p>
+          <h2>รสไทยเดินทางต่อ</h2>
+          <p>อาหารไทยเดินทางไปไกลทั่วโลก แต่หัวใจยังคงอยู่ที่ครัวไทย</p>
+        </div>
       </div>
     </section>
 
-    <div style="height: 10vh;"></div>
   </div>
+</section>
 
   <!-- ========== PART 3 : PAGE 2 – STATS & CHARTS ========== -->
 
@@ -572,7 +564,58 @@
           ปัจจุบันมีมากกว่า 1,779 ร้านใน 63 ประเทศ
         </p>
 
-        <img src="assets/images/แผนที่1.png" alt="แผนที่ร้านอาหารไทยทั่วโลก" class="stats-map">
+        <div class="thai-select-map" aria-label="แผนที่แสดงภูมิภาคที่มีร้านอาหารได้รับตรา Thai Select ทั่วโลก">
+          <img src="assets/images/world-map.png" alt="แผนที่โลกแสดงประเทศไทยและตลาดอาหารไทยตัวอย่าง 5 ประเทศ" class="stats-map">
+
+          <button class="select-marker select-origin tooltip-left" type="button"
+            aria-label="ประเทศไทย จุดเริ่มต้นของรสชาติไทยสู่ครัวโลก" aria-expanded="false">
+            <span class="map-tooltip" aria-hidden="true">
+              <strong>🇹🇭 ประเทศไทย</strong>
+              <span>จุดเริ่มต้นของรสชาติไทยสู่ครัวโลก</span>
+            </span>
+          </button>
+
+          <button class="select-marker select-dot select-us tooltip-right" type="button"
+            aria-label="สหรัฐอเมริกา ตลาดหลักของผัดไทยและต้มยำ" aria-expanded="false">
+            <span class="map-tooltip" aria-hidden="true">
+              <strong>🇺🇸 สหรัฐอเมริกา</strong>
+              <span>ตลาดหลักของผัดไทยและต้มยำ</span>
+            </span>
+          </button>
+
+          <button class="select-marker select-dot select-fr" type="button"
+            aria-label="ฝรั่งเศส ตลาดอาหารไทยและไฟน์ไดนิ่งในยุโรป" aria-expanded="false">
+            <span class="map-tooltip" aria-hidden="true">
+              <strong>🇫🇷 ฝรั่งเศส</strong>
+              <span>ตลาดอาหารไทยและไฟน์ไดนิ่งในยุโรป</span>
+            </span>
+          </button>
+
+          <button class="select-marker select-dot select-cn tooltip-left" type="button"
+            aria-label="จีน ตลาดสำคัญของซอสและเครื่องปรุงรสไทย" aria-expanded="false">
+            <span class="map-tooltip" aria-hidden="true">
+              <strong>🇨🇳 จีน</strong>
+              <span>ตลาดสำคัญของซอสและเครื่องปรุงรสไทย</span>
+            </span>
+          </button>
+
+          <button class="select-marker select-dot select-jp tooltip-left" type="button"
+            aria-label="ญี่ปุ่น อาหารไทยพร้อมทานมีแนวโน้มเติบโต" aria-expanded="false">
+            <span class="map-tooltip" aria-hidden="true">
+              <strong>🇯🇵 ญี่ปุ่น</strong>
+              <span>อาหารไทยพร้อมทานมีแนวโน้มเติบโต</span>
+            </span>
+          </button>
+
+          <button class="select-marker select-dot select-au tooltip-left" type="button"
+            aria-label="ออสเตรเลีย นิยมข้าวหอมมะลิและน้ำพริกไทย" aria-expanded="false">
+            <span class="map-tooltip" aria-hidden="true">
+              <strong>🇦🇺 ออสเตรเลีย</strong>
+              <span>นิยมข้าวหอมมะลิและน้ำพริกไทย</span>
+            </span>
+          </button>
+        </div>
+        <p class="map-note">ชี้เมาส์หรือแตะจุดบนแผนที่ เพื่อดูชื่อประเทศและข้อมูลตลาดอาหารไทยโดยย่อ</p>
 
         <p class="stats-subtitle" style="margin-top: 20px;">
           จากรสชาติในครัวบ้าน สู่เศรษฐกิจมูลค่ากว่า 1.3 ล้านล้านบาท
@@ -602,7 +645,7 @@
                   <img src="assets/images/USA.png" alt="USA">
                 </div>
                 <div class="bar-shell">
-                  <div class="bar bar-us" data-height="210"></div>
+                  <div class="bar bar-us" data-height="210" data-value="20%"></div>
                 </div>
                 <div class="bar-label">ผัดไทย, ต้มยำ</div>
               </div>
@@ -612,7 +655,7 @@
                   <img src="assets/images/china.png" alt="China">
                 </div>
                 <div class="bar-shell">
-                  <div class="bar bar-cn" data-height="170"></div>
+                  <div class="bar bar-cn" data-height="170" data-value="16%"></div>
                 </div>
                 <div class="bar-label">ซอส เครื่องปรุงรส</div>
               </div>
@@ -622,7 +665,7 @@
                   <img src="assets/images/Japan.png" alt="Japan">
                 </div>
                 <div class="bar-shell">
-                  <div class="bar bar-jp" data-height="155"></div>
+                  <div class="bar bar-jp" data-height="155" data-value="15%"></div>
                 </div>
                 <div class="bar-label">อาหารพร้อมทาน</div>
               </div>
@@ -632,7 +675,7 @@
                   <img src="assets/images/Aus.png" alt="Australia">
                 </div>
                 <div class="bar-shell">
-                  <div class="bar bar-au" data-height="130"></div>
+                  <div class="bar bar-au" data-height="130" data-value="12%"></div>
                 </div>
                 <div class="bar-label">น้ำพริก, ข้าวหอมมะลิ</div>
               </div>
@@ -642,7 +685,7 @@
                   <img src="assets/images/Fran.png" alt="France">
                 </div>
                 <div class="bar-shell">
-                  <div class="bar bar-fr" data-height="115"></div>
+                  <div class="bar bar-fr" data-height="115" data-value="11%"></div>
                 </div>
                 <div class="bar-label">แกงไทย, ซอสพริก</div>
               </div>
@@ -756,17 +799,15 @@
 
                 <!-- 1. Sustainable Food — รูปซ้าย / ข้อความขวา -->
                 <div class="future-item">
-                    <h4 class="reveal" style="text-align:center;">1. Sustainable Food</h4>
+                    <h4 class="reveal"><i data-lucide="leaf" aria-hidden="true"></i> อาหารยั่งยืน</h4>
 
-                    <div class="future-block reveal" 
-                        style="display:flex; gap:40px; align-items:center; margin:40px 0;">
+                    <div class="future-block reveal">
                         
-                        <div class="future-img" style="flex:1;">
-                            <img src="assets/images/ส้มตำ.png" alt="Sustainable Food" 
-                                style="width:100%; border-radius:12px;">
+                        <div class="future-img">
+                            <img src="assets/images/ส้มตำ.png" alt="ส้มตำจากวัตถุดิบท้องถิ่น">
                         </div>
 
-                        <div class="future-text" style="flex:1;">
+                        <div class="future-text">
                             <p>
                                 ไทยมีพื้นที่เกษตรอินทรีย์ทะลุ 300,000+ ไร่ และกำลังขยายทุกปี วัตถุดิบหลายชนิดของไทย (เช่น ข่า ตะไคร้ มะกรูด) เป็น 
                                 พืชสมุนไพรที่ปลูกแบบโลว์คาร์บอน อยู่แล้ว จึงตอบโจทย์ตลาดที่ต้อง
@@ -777,17 +818,15 @@
 
                 <!-- 2. Healthy & Functional Food — รูปขวา / ข้อความซ้าย -->
                 <div class="future-item">
-                    <h4 class="reveal" style="text-align:center;">2. Healthy & Functional Food</h4>
+                    <h4 class="reveal"><i data-lucide="heart-pulse" aria-hidden="true"></i> อาหารสุขภาพและฟังก์ชัน</h4>
 
-                    <div class="future-block reveal" 
-                        style="display:flex; gap:40px; align-items:center; margin:40px 0; flex-direction:row-reverse;">
+                    <div class="future-block reverse reveal">
                         
-                        <div class="future-img" style="flex:1;">
-                            <img src="assets/images/น้ำพริกกะปิ.jpeg" alt="Healthy Food"
-                                style="width:100%; border-radius:12px;">
+                        <div class="future-img">
+                            <img src="assets/images/น้ำพริกกะปิ.jpeg" alt="น้ำพริกกะปิและผักพื้นบ้าน">
                         </div>
 
-                        <div class="future-text" style="flex:1;">
+                        <div class="future-text">
                             <p>      ไทยมี สมุนไพรและผักพื้นบ้านกว่า 200 ชนิด ที่วิจัยแล้วว่ามีฤทธิ์ทางสุขภาพ เช่น ขมิ้นชัน ตะไคร้ มะขามป้อม กระชายดำ 
                                 รสชาติอาหารไทยเข้มข้นด้วย “สมุนไพรแท้ ๆ” ทำให้จานเดียวมีสารต้านอนุมูลอิสระสูงมาก อาหารไทยหลายเมนูเป็น 
                                 “Naturally Healthy Food” อยู่แล้ว
@@ -798,17 +837,15 @@
 
                 <!-- 3. Local Ingredients Revival — รูปซ้าย / ข้อความขวา -->
                 <div class="future-item">
-                    <h4 class="reveal" style="text-align:center;">3. Local Ingredients Revival</h4>
+                    <h4 class="reveal"><i data-lucide="sprout" aria-hidden="true"></i> คืนชีวิตวัตถุดิบท้องถิ่น</h4>
 
-                    <div class="future-block reveal" 
-                        style="display:flex; gap:40px; align-items:center; margin:40px 0;">
+                    <div class="future-block reveal">
                         
-                        <div class="future-img" style="flex:1;">
-                            <img src="assets/images/แกงไตปลา.jpg" alt="Local Ingredients Revival"
-                                style="width:100%; border-radius:12px;">
+                        <div class="future-img">
+                            <img src="assets/images/แกงไตปลา.jpg" alt="แกงไตปลาจากวัตถุดิบท้องถิ่น">
                         </div>
 
-                        <div class="future-text" style="flex:1;">
+                        <div class="future-text">
                             <p>เมืองไทยมีวัตถุดิบเฉพาะถิ่นจำนวนมาก เช่น ข้าวหอมมะลิ, มะนาวสด, ปลาร้าหมักธรรมชาติ, กะปิคั้นมือ,เครื่องแกงตำสด ร้านไทยในต่างประเทศเริ่มทำ “Thai Local Experience Menu” เช่น เมนูอีสานแท้ เมนูใต้รสเข้ม เมนูเหนือกลิ่นสมุนไพร
                             </p>
                         </div>
@@ -816,17 +853,15 @@
                 </div>
                 <!-- 4. Ready-to-Eat Innovation — รูปขวา / ข้อความซ้าย -->
                 <div class="future-item">
-                    <h4 class="reveal" style="text-align:center;">4. Ready-to-Eat Innovation</h4>
+                    <h4 class="reveal"><i data-lucide="package-open" aria-hidden="true"></i> นวัตกรรมอาหารพร้อมทาน</h4>
 
-                    <div class="future-block reveal" 
-                        style="display:flex; gap:40px; align-items:center; margin:40px 0; flex-direction:row-reverse;">
+                    <div class="future-block reverse reveal">
                         
-                        <div class="future-img" style="flex:1;">
-                            <img src="assets/images/รูปแกงเขียวหวาน ออสเตรเลีย.png" alt="Ready-to-Eat Innovation"
-                                style="width:100%; border-radius:12px;">
+                        <div class="future-img ready-meal-frame">
+                            <img class="ready-meal-image" src="assets/images/thai-ready-to-eat.png" alt="ข้าวกะเพราไก่พร้อมทานในบรรจุภัณฑ์แบบไม่มีแบรนด์">
                         </div>
 
-                        <div class="future-text" style="flex:1;">
+                        <div class="future-text">
                             <p>ไทยมีโรงงานแปรรูปอาหารมาตรฐานโลกจำนวนมาก (HACCP, GMP, FDA EU) อาหารไทยหลายเมนูเหมาะสำหรับ RTE
                                 โดยธรรมชาติ เช่น ต้มยำ ผัดไทย แกงต่าง ๆ มีเทคโนโลยีสเตอริไลซ์ อบแห้ง แช่แข็งคุณภาพสูงอยู่แล้ว
                             </p>
@@ -843,11 +878,11 @@
             </h3>
 
             <!-- BLOCK 1 : ดักแด้ (รูปซ้าย / ข้อความขวา) -->
-            <div class="future-block reveal" style="display:flex; gap:40px; align-items:center; margin:50px 0;">
-                <div class="future-img" style="flex:1;">
-                    <img src="assets/images/ดักแด้หนอนไหม.png" alt="ดักแด้" style="width:100%; border-radius:12px;">
+            <div class="future-block reveal">
+                <div class="future-img">
+                    <img src="assets/images/ดักแด้หนอนไหม.png" alt="ดักแด้หนอนไหม">
                 </div>
-                <div class="future-text" style="flex:1;">
+                <div class="future-text">
                     <h4>ดักแด้โปรตีนสูง</h4>
                     <p>การปรับตัวของเกษตรกรผู้เลี้ยงจิ้งหรีดในภาคอีสาน เพื่อยกระดับฟาร์มสู่มาตรฐานสากล 
                         ตอบรับกระแสความต้องการโปรตีนจากแมลงซึ่งเป็นอาหารแห่งอนาคตของโลก</p>
@@ -855,11 +890,11 @@
             </div>
 
             <!-- BLOCK 2 : ไข่ผำ (รูปขวา / ข้อความซ้าย) -->
-            <div class="future-block reveal" style="display:flex; gap:40px; align-items:center; margin:50px 0; flex-direction:row-reverse;">
-                <div class="future-img" style="flex:1;">
-                    <img src="assets/images/ไข่ผำ.jpg" alt="ไข่ผำ" style="width:100%; border-radius:12px;">
+            <div class="future-block reverse reveal">
+                <div class="future-img">
+                    <img src="assets/images/ไข่ผำ.jpg" alt="ไข่ผำ โปรตีนจากพืช">
                 </div>
-                <div class="future-text" style="flex:1;">
+                <div class="future-text">
                     <h4>ไข่ผำ (Plant-based protein)</h4>
                     <p>ไข่ผำ” เป็นพืชน้ำขนาดเล็กที่มีคุณค่าทางโภชนาการสูง มีลักษณะเป็นเม็ดเล็ก ๆ 
                         สีเขียวคล้ายไข่ปลาและกำลังได้รับความนิยมมากขึ้นในฐานะซูเปอร์ฟู้ดของอนาคต 
@@ -940,19 +975,19 @@
         <div class="features-grid">
 
         <article class="feature-card" data-animate>
-            <h3>Low Carbon Food</h3>
+            <h3>อาหารคาร์บอนต่ำ</h3>
             <p>วัตถุดิบท้องถิ่นใกล้แหล่งผลิต ลดการขนส่งและปล่อยก๊าซคาร์บอนต่ำ — เหมาะกับตลาดยุคใหม่ที่ใส่ใจสิ่งแวดล้อม</p>
             <img src="assets/images/low-carbon-food.png" alt="">
         </article>
 
         <article class="feature-card" data-animate>
-            <h3>Authentic Taste</h3>
+            <h3>รสชาติต้นตำรับ</h3>
             <p>สูตรดั้งเดิม + วิธีทำที่มีเอกลักษณ์เฉพาะตัว</p>
             <img src="assets/images/authentic-taste.png" alt="">
         </article>
 
         <article class="feature-card" data-animate>
-            <h3>Sustainable Packaging</h3>
+            <h3>บรรจุภัณฑ์ยั่งยืน</h3>
             <p>บรรจุภัณฑ์ที่ย่อยสลายได้ + งานออกแบบใหม่</p>
             <img src="assets/images/sustainable-packaging.png" alt="">
         </article>
@@ -982,21 +1017,25 @@
 
             <div class="foodtype-grid">
 
-                <div class="foodtype-card" onclick="showFoodTypeDetail('spicy')">
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('spicy')">
+                    <span class="foodtype-icon" aria-hidden="true">🌶️</span>
                     <h3>สายจัด<span class="red">จ้าน</span></h3>
-                </div>
+                </button>
 
-                <div class="foodtype-card" onclick="showFoodTypeDetail('soft')">
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('soft')">
+                    <span class="foodtype-icon" aria-hidden="true">🥥</span>
                     <h3>สายนุ่ม<span class="yellow-text">ละมุน</span></h3>
-                </div>
+                </button>
 
-                <div class="foodtype-card" onclick="showFoodTypeDetail('healthy')">
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('healthy')">
+                    <span class="foodtype-icon" aria-hidden="true">🌿</span>
                     <h3>สาย<span class="green">สุขภาพ</span></h3>
-                </div>
+                </button>
 
-                <div class="foodtype-card" onclick="showFoodTypeDetail('modern')">
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('modern')">
+                    <span class="foodtype-icon" aria-hidden="true">✨</span>
                     <h3>สายทัน<span class="purple">สมัย</span></h3>
-                </div>
+                </button>
 
             </div>
 
@@ -1032,46 +1071,46 @@
         <!-- หน้าเลือกเมนู -->
         <div id="favFoodSelect" class="favfood-select">
 
-            <div class="menu-card" onclick="showFoodDetail('tomyum')">
-                <img src="assets\images\favfooddetail\ต้มยำกุ้ง_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('tomyum')">
+                <img src="assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.png" alt="ต้มยำกุ้ง">
                 
                 <h3>ต้มยำกุ้ง</h3>
-            </div>
+            </button>
 
-            <div class="menu-card" onclick="showFoodDetail('padthai')">
-                <img src="assets\images\favfooddetail\ผัดไทย_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('padthai')">
+                <img src="assets/images/favfooddetail/ผัดไทย_จานโปรด.png" alt="ผัดไทย">
                 <h3>ผัดไทย</h3>
-            </div>
+            </button>
 
-            <div class="menu-card" onclick="showFoodDetail('greencurry')">
-                <img src="assets\images\favfooddetail\แกงเขียวหวาน_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('greencurry')">
+                <img src="assets/images/favfooddetail/แกงเขียวหวาน_จานโปรด.png" alt="แกงเขียวหวาน">
                 <h3>แกงเขียวหวาน</h3>
-            </div>
+            </button>
 
-            <div class="menu-card" onclick="showFoodDetail('taipla')">
-                <img src="assets\images\favfooddetail\แกงไตปลา_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('taipla')">
+                <img src="assets/images/favfooddetail/แกงไตปลา_จานโปรด.png" alt="แกงไตปลา">
                 <h3>แกงไตปลา</h3>
-            </div>
+            </button>
 
-            <div class="menu-card" onclick="showFoodDetail('stickyrice')">
-                <img src="assets\images\favfooddetail\ข้าวเหนียวมะม่วง_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('stickyrice')">
+                <img src="assets/images/favfooddetail/ข้าวเหนียวมะม่วง_จานโปรด.png" alt="ข้าวเหนียวมะม่วง">
                 <h3>ข้าวเหนียวมะม่วง</h3>
-            </div>
+            </button>
 
-            <div class="menu-card" onclick="showFoodDetail('redcurry')">
-                <img src="assets\images\favfooddetail\แกงมัสมั่นไก่_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('redcurry')">
+                <img src="assets/images/favfooddetail/แกงมัสมั่นไก่_จานโปรด.png" alt="แกงมัสมั่น">
                 <h3>แกงมัสมั่น</h3>
-            </div>
+            </button>
 
-            <div class="menu-card" onclick="showFoodDetail('tomkakai')">
-                <img src="assets\images\favfooddetail\ต้มข่าไก่_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('tomkakai')">
+                <img src="assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png" alt="ต้มข่าไก่">
                 <h3>ต้มข่าไก่</h3>
-            </div>
+            </button>
 
-            <div class="menu-card" onclick="showFoodDetail('kaosoi')">
-                <img src="assets\images\favfooddetail\ข้าวซอย_จานโปรด.png" alt="">
+            <button type="button" class="menu-card" onclick="showFoodDetail('kaosoi')">
+                <img src="assets/images/favfooddetail/ข้าวซอย_จานโปรด.png" alt="ข้าวซอย">
                 <h3>ข้าวซอย</h3>
-            </div>
+            </button>
 
         </div>
 
