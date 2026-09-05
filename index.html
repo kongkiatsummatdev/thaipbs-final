@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อาหารไทย...จากครัวบ้านสู่ครัวโลก | Thai PBS Locals x IT MSU</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="ชวนสำรวจวิวัฒนาการและโอกาสของอาหารไทยในเวทีโลก ผ่านรูปแบบข่าว Interactive Journalism โดยคณะวิทยาการสารสนเทศ มมส. และ Thai PBS Locals">
+    <meta name="keywords" content="อาหารไทย, ครัวไทยสู่ครัวโลก, Thai PBS, มหาสารคาม, มมส, Interactive Journalism, ซอฟต์พาวเวอร์">
+    <meta name="author" content="Thai PBS Locals & IT MSU">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#181009">
+
+    <link rel="canonical" href="https://thaipbs-interactive-website.vercel.app/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logos/thaipbs-locals.png">
+    <link rel="apple-touch-icon" href="assets/images/logos/thaipbs-locals.png">
+
+    <!-- Open Graph / Facebook / LINE -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thaipbs-interactive-website.vercel.app/">
+    <meta property="og:title" content="อาหารไทย...จากครัวบ้านสู่ครัวโลก | Thai PBS Locals x IT MSU">
+    <meta property="og:description" content="ชวนสำรวจวิวัฒนาการและโอกาสของอาหารไทยในเวทีโลก ผ่านรูปแบบข่าว Interactive Journalism โดยคณะวิทยาการสารสนเทศ มมส. และ Thai PBS Locals">
+    <meta property="og:image" content="https://thaipbs-interactive-website.vercel.app/assets/images/หน้าแรก.png">
+    <meta property="og:site_name" content="Thai Food Heritage Journey">
+    <meta property="og:locale" content="th_TH">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://thaipbs-interactive-website.vercel.app/">
+    <meta name="twitter:title" content="อาหารไทย...จากครัวบ้านสู่ครัวโลก | Thai PBS Locals x IT MSU">
+    <meta name="twitter:description" content="ชวนสำรวจวิวัฒนาการและโอกาสของอาหารไทยในเวทีโลก ผ่านรูปแบบข่าว Interactive Journalism โดยคณะวิทยาการสารสนเทศ มมส. และ Thai PBS Locals">
+    <meta name="twitter:image" content="https://thaipbs-interactive-website.vercel.app/assets/images/หน้าแรก.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Sarabun:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style/custom.css">
+</head>
+
+<body>
+
+  <!-- ========== FLOATING SOUND CONTROLLER ========== -->
+  <div class="audio-controller-wrapper" id="audioControllerWrapper">
+    <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="เปิด/ปิดเสียงบรรยากาศ" title="เปิด/ปิดเสียงดนตรีบรรยากาศ">
+      <span class="sound-icon-container">
+        <i data-lucide="volume-x" id="soundIcon"></i>
+      </span>
+      <div class="sound-wave" id="soundWave" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span class="sound-label" id="soundLabel">เปิดเสียงดนตรี</span>
+    </button>
+    <div class="sound-volume-slider-box" id="volumeSliderBox">
+      <i data-lucide="volume-2" style="width: 15px; height: 15px; color: var(--gold-color);"></i>
+      <input type="range" id="soundVolumeSlider" min="0" max="100" value="18" aria-label="ระดับเสียง" title="ปรับระดับเสียง">
+    </div>
+  </div>
+
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="assets/bgm.mp3" type="audio/mpeg">
+    <source src="assets/audio/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- พื้นหลังสมุนไพรแบบหลายเลเยอร์ เคลื่อนตามการเลื่อนหน้า -->
+  <div class="parallax-container" aria-hidden="true">
+    <div class="herb-atmosphere"></div>
+    <span class="ingredient herb-leaf herb-leaf-a" data-speed="0.22"></span>
+    <span class="ingredient herb-leaf herb-leaf-b" data-speed="0.38"></span>
+    <span class="ingredient lemongrass" data-speed="0.28"></span>
+    <span class="ingredient chilli" data-speed="0.44"></span>
+    <span class="ingredient star-anise" data-speed="0.32">✦</span>
+    <span class="steam-wisp steam-wisp-a"></span>
+    <span class="steam-wisp steam-wisp-b"></span>
+  </div>
+
+  <div class="texture-overlay"></div>
+
+  <!-- ========== PART 1 : TIMELINE HERO ========== -->
+  <header class="hero-header">
+    <div class="header-content">
+      <h1 class="main-title">อาหารไทย...จากครัวบ้านสู่</h1>
+      <h1 class="main-title">ครัวโลก</h1>
+      <p class="subtitle-hero">อดีตสู่ ปัจจุบัน</p>
+    </div>
+    <div class="scroll-indicator">
+      <h2 class="history-heading">ประวัติศาสตร์อาหาร "ไทย"</h2>
+    </div>
+  </header>
+
+  <!-- TIMELINE -->
+  <div class="timeline-container">
+    <!-- CARD 1 -->
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/TimeFish.png" alt="Pla Pao" class="card-image">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">ปลาเผาโบราณ</h2>
+        <div class="year-text">พ.ศ. 1800</div>
+        <div class="location-tag">
+          <i data-lucide="flame" style="width: 16px;"></i> ยุคก่อนประวัติศาสตร์ไทย
+        </div>
+        <p class="card-desc">
+          ลักษณะอาหารช่วงนี้ ใช้สมุนไพรพื้นบ้าน: ข่า ตะไคร้ ใบมะกรูด
+          เริ่มรู้จักการถนอมอาหาร: หมักเกลือ, ตากแห้ง
+          มีร่องรอย “ต้นแบบน้ำปลา/ปลาร้า” จากการหมักปลา
+          เทคนิคสำคัญ: ต้ม ย่าง อบ (ยังไม่มีการผัด)
+          เมนูต้นแบบ: ปลาอบ, ต้มสมุนไพร, อาหารหมัก
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/t12.png" alt="Kaeng Liang" class="card-image">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">แกงมัสมั่น</h2>
+        <div class="year-text">พ.ศ. 1893–2310</div>
+        <div class="location-tag">
+          <i data-lucide="landmark" style="width: 16px;"></i>ยุคอยุธยา
+        </div>
+        <p class="card-desc">
+          ยุคที่อาหารไทยเริ่มผสมผสานวัฒนธรรมต่างชาติจากการค้าโลก
+          โปรตุเกสนำพริก มะเขือเทศ ฟักทอง เข้ามา
+          จีนถ่ายทอดการผัดด้วยไฟแรงและซอสถั่วเหลือง
+          เครื่องเทศจากอินเดีย–เปอร์เซีย เช่น อบเชย ลูกกระวาน
+          เกิดขนมทองหยิบ–ทองหยอด และแกงเผ็ดไทยที่เริ่มเข้มข้นขึ้น
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/t13.png" alt="Massaman" class="card-image">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">แกงเลียง</h2>
+        <div class="year-text">พ.ศ. 2310–2325</div>
+        <div class="location-tag">
+          <i data-lucide="ship" style="width: 16px;"></i>ยุคธนบุรี
+        </div>
+        <p class="card-desc">
+          ยุคที่อาหารไทยมีพื้นฐานจากทรัพยากรท้องถิ่น เน้นสมุนไพรและการถนอมอาหาร
+          ใช้สมุนไพรเพื่อกลิ่นและยา ไม่มีพริกแดงจากต่างชาติ
+          วิธีทำอาหาร: ต้ม, ย่าง, ปิ้ง, หมัก, ทำปลาร้า
+          วัตถุดิบสำคัญ: พริกไทยป่า, ข่า, ตะไคร้, ปลาแม่น้ำ
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/t09.png" alt="Khao Chae" class="card-image">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">ผัดผักบุ้งไฟแดง</h2>
+        <div class="year-text">พ.ศ.2325–2394 </div>
+        <div class="location-tag">
+          <i data-lucide="crown" style="width: 16px;"></i> ยุครัตนโกสินทร์ตอนต้น
+        </div>
+        <p class="card-desc">
+          ยุคที่ตำรับไทยเริ่มถูกบันทึก และซอสถั่วเหลือง-ก๋วยเตี๋ยวจากจีนเริ่มแพร่หลาย
+          การใช้กะทิแพร่หลาย
+          ผัดด้วยไฟแรงแบบจีนกลายเป็นส่วนหนึ่งของอาหารไทย
+          ตัวอย่างเมนู: ต้มยำ, แกงกะทิ, ผัดผักบุ้งไฟแดง, ก๋วยเตี๋ยวน้ำใสแบบจีน
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/t11.png" alt="Thai Roast Beef" class="card-image">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">แกงเขียวหวาน</h2>
+        <div class="year-text">พ.ศ.2325–2394 </div>
+        <div class="location-tag">
+          <i data-lucide="globe-2" style="width: 16px;"></i>ยุครัตนโกสินทร์ตอนกลาง–ปลาย
+        </div>
+        <p class="card-desc">
+          ยุคที่สยามรับอิทธิพลตะวันตกและเริ่มมี “อาหารชาววัง” ที่ประณีต
+          เริ่มใช้นม เนย ขนมปัง
+          ครัวหลวงทำให้วิธีทำอาหารละเอียดขึ้น
+          ผสมเทคนิคไทย–จีน–ตะวันตก → หมี่กรอบชาววัง, แกงเขียวหวาน, ไข่ลูกเขย
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/t07.png" alt="padthai" class="card-image">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">ผัดไทย</h2>
+        <div class="year-text">พ.ศ. 2482–2490</div>
+        <div class="location-tag">
+          <i data-lucide="chef-hat" style="width: 16px;"></i>ยุครัฐนิยม จอมพล ป.พิบูลสงคราม
+        </div>
+        <p class="card-desc">
+          ยุคที่อาหารไทยถูกใช้สร้าง “อัตลักษณ์ชาติ” → กำเนิดผัดไทย
+          รัฐรณรงค์ให้กินก๋วยเตี๋ยวเพื่อลดการใช้ข้าว
+          สร้างเมนู “ก๋วยเตี๋ยวผัดแบบไทย” → กลายเป็น ผัดไทย
+          เป็นหนึ่งในเมนูที่คนต่างชาติรู้จักมากที่สุด
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div class="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/t08.png" alt="Tom Yum Goong" class="card-image">
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">ซุปต้มยำกุ้ง</h2>
+        <div class="year-text">พ.ศ. 2520 – ปัจจุบัน</div>
+        <div class="location-tag">
+          <i data-lucide="earth" style="width: 18px;"></i> อาหารไทยสมัยใหม่สู่เวทีโลก
+        </div>
+        <p class="card-desc">
+          ยุค Globalization ที่ทำให้อาหารไทยโด่งดังระดับโลก
+          “ครัวไทยสู่ครัวโลก” ดันร้านอาหารไทยทั่วโลก
+          มัสมั่น–ต้มยำ–แกงเขียวหวาน ติดอันดับเมนูอร่อยของโลก
+          และเกิดเมนูฟิวชัน เช่น ต้มยำพาสต้า, แกงเขียวหวานพิซซ่า
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== PART 2 : MAP JOURNEY ========== -->
+
+
+<section id="map-section">
+
+  <div class="map-fixed-container">
+    <div class="map-inner" id="map-click-target">
+      <img
+        src="assets/images/world-map.png"
+        alt="World Map" class="world-map-bg">
+      <svg class="map-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+        <path id="path-jp" class="route-path" d="M772,282 Q820,200 868,201" />
+        <path id="path-cn" class="route-path" d="M772,282 Q785,220 797,186" />
+        <path id="path-au" class="route-path" d="M772,282 Q840,380 907,426" />
+        <path id="path-fr" class="route-path" d="M772,282 Q620,150 482,180" />
+        <path id="path-us" class="route-path" d="M772,282 Q500,50 269,198" />
+      </svg>
+      <div class="marker loc-th"></div>
+      <div class="flag-icon loc-jp" id="flag-jp"><img src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น"></div>
+      <div class="flag-icon loc-cn" id="flag-cn"><img src="assets/images/flags/cn.svg" alt="ธงประเทศจีน"></div>
+      <div class="flag-icon loc-au" id="flag-au"><img src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย"></div>
+      <div class="flag-icon loc-fr" id="flag-fr"><img src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส"></div>
+      <div class="flag-icon loc-us" id="flag-us"><img src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา"></div>
+    </div>
+  </div>
+
+  <div class="map-texture-overlay"></div>
+  <div class="map-vignette-overlay"></div>
+
+  <!-- SCROLL SECTIONS FOR MAP JOURNEY -->
+  <div class="scroll-container">
+    <section class="section" id="sec-intro">
+      <div class="map-intro-copy">
+        <p class="map-intro-kicker">จากครัวบ้านสู่ครัวโลก</p>
+        <h1>เส้นทางรสชาติไทย</h1>
+        <p class="map-intro-prompt">เลื่อนเพื่อเริ่มการเดินทาง</p>
+      </div>
+    </section>
+
+    <section class="section" id="sec-jp">
+      <div class="content-card">
+        <div class="card-header">
+          <div class="header-text">
+            <div class="sub-title">Japan</div>
+            <h2 class="thai-header">รสไทยในแดนอูมามิ</h2>
+          </div>
+          <div class="flag-badge-map">
+              <img src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="story-content">
+            <p class="quote">“ญี่ปุ่น...หนึ่งในประเทศที่หลงใหลอาหารไทยมากที่สุดในเอเชีย”</p>
+            <p class="desc">อาหารไทยกลายเป็นรสชาติที่คนญี่ปุ่นหลงใหล
+              ร้านอาหารไทยมากกว่า 1,000 แห่ง กระจายอยู่ทั่วโตเกียวและเมืองใหญ่
+              คนญี่ปุ่นเริ่มทำ “ผัดไทย” และเมนูไทยกินเองที่บ้านมากขึ้นทุกปี</p>
+          </div>
+          <div class="food-gallery">
+            <div class="food-card">
+              <img src="assets/images/รูปต้มยำกุ้ง สไตล์ญี่ปุ่น .png" alt="Tom Yum">
+              <span>ต้มยำกุ้ง</span>
+            </div>
+            <div class="food-card">
+              <img src="assets/images/รูปข้าวผัด สไตล์ญี่ปุ่น .png" alt="Pad Thai">
+              <span>ผัดไทย</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <img src="assets/images/Japan.jpg" alt="Japan" class="landmark-bg">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec-cn">
+      <div class="content-card">
+        <div class="card-header">
+          <div class="header-text">
+            <div class="sub-title">China</div>
+            <h2 class="thai-header">รสชาติไทยในตลาดที่โตเร็วที่สุด</h2>
+          </div>
+          <div class="flag-badge-map">
+            <img src="assets/images/flags/cn.svg" alt="ธงประเทศจีน">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="story-content">
+            <p class="quote">“จีน...ตลาดยักษ์ใหญ่ที่เริ่มหลงรักรสเผ็ดแบบไทยๆ”</p>
+            <p class="desc">
+              จากเมนูแปลกใหม่ในร้านหรู ปัจจุบันอาหารไทยกลายเป็นที่นิยมในคนรุ่นใหม่ของจีน
+              โดยเฉพาะ “ต้มยำกุ้ง” และ “ข้าวเหนียวมะม่วง” ที่ครองใจคนเมืองในปักกิ่งและเซี่ยงไฮ้
+            </p>
+          </div>
+          <div class="food-gallery">
+            <div class="food-card">
+              <img src="assets/images/รูปต้มยำกุ้ง สไตล์จีน .png" alt="Tom Yum China">
+              <span>ต้มยำหม้อไฟ</span>
+            </div>
+            <div class="food-card">
+              <img src="assets/images/รูปข้าวเหนี่ยวมะม่วง สไตล์จีน .png" alt="Mango sticky rice">
+              <span>ข้าวเหนียวมะม่วง</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <img src="assets/images/chaina.jpg" alt="China" class="landmark-bg">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec-au">
+      <div class="content-card">
+        <div class="card-header">
+          <div class="header-text">
+            <div class="sub-title">Australia</div>
+            <h2 class="thai-header">รสไทยในบ้านของชาวออสซี่</h2>
+          </div>
+          <div class="flag-badge-map">
+            <img src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="story-content">
+            <p class="quote">“ออสเตรเลีย...ประเทศที่คนทำอาหารไทยกินเองมากที่สุดในโลก”</p>
+            <p class="desc">
+              ร้านอาหารไทยและเครื่องแกงไทยอยู่ในซูเปอร์มาร์เก็ตทั่วประเทศ
+              หลายครอบครัวทำแกงเขียวหวานหรือส้มตำกินเองที่บ้าน
+              ทำให้รสชาติไทยกลายเป็นส่วนหนึ่งของชีวิตประจำวันชาวออสซี่
+            </p>
+          </div>
+          <div class="food-gallery">
+            <div class="food-card">
+              <img src="assets/images/รูปต้มยำกุ้ง ออสเตรเลีย.png" alt="Tom Yum Aus">
+              <span>ต้มยำกุ้ง</span>
+            </div>
+            <div class="food-card">
+              <img src="assets/images/รูปแกงเขียวหวาน ออสเตรเลีย.png" alt="Green curry">
+              <span>แกงเขียวหวาน</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <img src="assets/images/Aus.jpg" alt="Uluru, Australia" class="landmark-bg">
+        </div>
+      </div>
+    </section>
+
+    <section class="section-end" id="sec-fr">
+      <div class="content-card">
+        <div class="card-header">
+          <div class="header-text">
+            <div class="sub-title">France</div>
+            <h2 class="thai-header">รสอาหารไทยในเมืองศิลปะ</h2>
+          </div>
+          <div class="flag-badge-map">
+            <img src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="story-content">
+            <p class="quote">“ฝรั่งเศสสรรค์สร้างอาหารไทย กลายเป็นงานศิลป์บนจาน”</p>
+            <p class="desc">
+              ในฝรั่งเศส อาหารไทยถูกยกระดับจากจานพื้นบ้านสู่เวที fine dining
+              เมนูแกงมัสมั่นและต้มข่าไก่ปรากฏในร้านดาว Michelin
+              เชฟฝรั่งเศสมองว่าอาหารไทยคือการผสมผสานสมุนไพรและเครื่องเทศที่ประณีต
+            </p>
+          </div>
+          <div class="food-gallery">
+            <div class="food-card">
+              <img src="assets/images/รูปมัสมั่นไก่ สไตล์ ฝรั่งเศส.png" alt="Massaman">
+              <span>มัสมั่นไก่</span>
+            </div>
+            <div class="food-card">
+              <img src="assets/images/รูปต้มข่าไก่ สไตล์ ฝรั่งเศส .png" alt="Tom Kha">
+              <span>ต้มข่าไก่</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <img src="assets/images/Paris.jpg" alt="Paris" class="landmark-bg">
+        </div>
+    </section>
+
+    <section class="section-end" id="sec-us">
+      <div class="content-card">
+        <div class="card-header">
+          <div class="header-text">
+            <div class="sub-title">USA</div>
+            <h2 class="thai-header">รสครัวไทยสู่ครัวโลก</h2>
+          </div>
+          <div class="flag-badge-map">
+            <img src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="story-content">
+            <p class="quote">“อเมริกา...บ้านหลังใหญ่ของอาหารไทยในโลกตะวันตก”</p>
+            <p class="desc">
+              จากร้านเล็ก ๆ ของผู้อพยพไทย ปัจจุบันมีร้านอาหารไทยกว่า 7,000 ร้านทั่วสหรัฐ
+              ผัดไทยและต้มยำกลายเป็นเมนู “ประจำ” ของหลายเมือง
+              เป็น Soft Power ที่ทำให้คนจำชื่อประเทศไทยผ่านรสชาติ
+            </p>
+          </div>
+          <div class="food-gallery">
+            <div class="food-card">
+              <img src="assets/images/รูปผัดไทย สไตล์ อเมริกา.png" alt="Pad Thai USA">
+              <span>ผัดไทย (Pad Thai)</span>
+            </div>
+            <div class="food-card">
+              <img src="assets/images/รูปผัดซีอิ๊ว สไตล์ อเมริกา .png" alt="Pad see ew">
+              <span>ผัดซีอิ๊ว</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <img src="assets/images/USA1.jpg" alt="USA" class="landmark-bg">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec-outro">
+      <div class="map-outro-card">
+        <div class="outro-visuals" aria-hidden="true">
+          <img src="assets/images/ผัดไทย.1.png" alt="">
+          <img src="assets/images/รูปต้มยำกุ้ง .png" alt="">
+        </div>
+        <div class="map-outro-copy">
+          <p class="map-intro-kicker">รสชาติที่เดินทางข้ามพรมแดน</p>
+          <h2>รสไทยเดินทางต่อ</h2>
+          <p>อาหารไทยเดินทางไปไกลทั่วโลก แต่หัวใจยังคงอยู่ที่ครัวไทย</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+  <!-- ========== PART 3 : PAGE 2 – STATS & CHARTS ========== -->
+
+  <div class="page-wrapper">
+    <div class="page-card">
+
+      <!-- HEADER -->
+      <header class="page-header reveal">
+        <h1>
+          “จากร้าน<span class="highlight">ริมทาง</span> ในกรุงเทพฯ สู่จาน
+          <span class="highlight">“หรู”</span> ในลอนดอนและนิวยอร์ก”
+        </h1>
+        <h1 class="subtitle">อาหารไทยเดินทางไกล... กว่าที่เราคิด</h1>
+        <div class="header-underline"></div>
+      </header>
+
+      <!-- TOP IMAGES -->
+      <div class="top-images reveal">
+        <img src="assets/images/b_00.png" alt="ครัวไทย" />
+        <img src="assets/images/จานอาหารไทยคู่ครัว.png" alt="จานอาหารไทย" />
+      </div>
+
+      <!-- INTRO TEXT -->
+      <section class="intro-block reveal">
+        <h2>อาหาร คือภาษาสากลที่ไม่ต้องแปล... และ “อาหารไทย” ก็พูดได้ชัดเจนในทุกมุมโลก</h2>
+      </section>
+
+      <!-- DISH 1 -->
+      <section class="dish-section reveal">
+        <div class="dish-image-wrap">
+          <img class="dish-image" src="assets/images/รูปข้าวผัด สไตล์ญี่ปุ่น .png" alt="อาหารไทยรวม" />
+        </div>
+        <div>
+          <div class="dish-title">อาหารไทย: รสชาติที่คนทั่วโลกเริ่มคุ้นเคย</div>
+          <div class="dish-subtitle">จากเมนู “แปลกใหม่” สู่เมนู “อยากกินอีก”</div>
+          <p class="dish-text">
+            อาหารไทย เป็นระบบวัฒนธรรมที่พัฒนาอย่างต่อเนื่องมานานหลายศตวรรษ
+            แต่ละรสชาติ—หวาน เค็ม เปรี้ยว เผ็ด—เกิดจากการผสมผสานวัตถุดิบท้องถิ่น เทคนิคดั้งเดิม
+            และอิทธิพลจากเพื่อนบ้าน เช่น จีน อินเดีย และมลายู
+          </p>
+        </div>
+      </section>
+
+      <!-- DISH 2 -->
+      <section class="dish-section reverse reveal">
+        <div>
+          <div class="dish-title">ผัดไทย</div>
+          <div class="dish-subtitle">จากเมนูริมทางสู่เมนูซิกเนเจอร์ในร้านอาหารไทยทั่วโลก</div>
+          <p class="dish-text">
+            กำเนิดในยุคสงครามโลกครั้งที่ 2 จากนโยบายชาตินิยมด้านอาหาร
+            ผัดไทยสะท้อนเอกลักษณ์รสชาติไทยครบในจานเดียว
+          </p>
+        </div>
+        <div class="dish-image-wrap">
+          <img class="dish-image" src="assets/images/ผัดไทย.1.png" alt="ผัดไทย" />
+        </div>
+      </section>
+
+      <!-- DISH 3 -->
+      <section class="dish-section reveal">
+        <div class="dish-image-wrap">
+          <img class="dish-image" src="assets/images/รูปต้มยำกุ้ง .png" alt="ต้มยำกุ้ง" />
+        </div>
+        <div>
+          <div class="dish-title">ต้มยำกุ้ง</div>
+          <div class="dish-subtitle">ซุปที่กลายเป็นสัญลักษณ์รสจัดจ้านแบบไทย ๆ</div>
+          <p class="dish-text">
+            ต้มยำกุ้งรวมสมุนไพรไทย เข้ากับเทคนิคการต้มแบบต่างชาติ
+            เป็น Soft Power ที่คนทั่วโลกรู้จักในคำแรกที่ได้ชิม
+          </p>
+        </div>
+      </section>
+
+      <!-- STATS : WORLD MAP -->
+      <section class="stats-section reveal">
+        <h3 class="stats-title">“ร้านอาหารไทยในต่างประเทศ”</h3>
+        <p class="stats-subtitle">
+          โครงการ Thai Select ให้ตรารับรองร้านที่คงรสชาติแบบไทยแท้
+          ปัจจุบันมีมากกว่า 1,900 ร้านใน 74 ประเทศ
+        </p>
+        <p class="detail-source">ที่มา: <a href="https://www.thaiselect.com/th?skipSplash=1" target="_blank" rel="noopener">thaiselect.com</a></p>
+
+        <div class="thai-select-map" aria-label="แผนที่แสดงภูมิภาคที่มีร้านอาหารได้รับตรา Thai Select ทั่วโลก">
+          <img src="assets/images/Gemini_Generated_Image_7e95l37e95l37e95.jpg" alt="แผนที่โลกแสดงประเทศไทยและตลาดอาหารไทยตัวอย่าง 5 ประเทศ" class="stats-map">
+        </div>
+        <p class="detail-source">ที่มา: <a href="https://www.thaiselect.com/welcome" target="_blank" rel="noopener">โครงการ Thai SELECT กระทรวงพาณิชย์</a></p>
+
+        <p class="stats-subtitle" style="margin-top: 20px;">
+          จากรสชาติในครัวบ้าน สู่เศรษฐกิจมูลค่ากว่า 1.3 ล้านล้านบาท
+          ปี 2566 มูลค่าการส่งออกอาหารไทยทะลุ 1.36 ล้านล้านบาท
+        </p>
+      </section>
+
+      <!-- EXPORT SHARE + DONUTS -->
+      <section class="export-section reveal">
+        <h3 class="export-text">
+          ประเทศไทยเป็นหนึ่งในผู้ส่งออกอาหารรายใหญ่ของเอเชีย โดยเฉพาะข้าวหอมมะลิ
+          ครองตลาดส่งออกอันดับ 1 ของโลก
+          ขณะที่น้ำปลาและพริกแกงไทยมีตลาดในกว่า 60 ประเทศ
+          อาหารแช่แข็งและอาหารพร้อมทานเติบโตเฉลี่ยราว 12% ต่อปี
+        </h3>
+        <p class="export-source">ที่มา: สมาคมผู้ส่งออกข้าวไทย (Thai Rice Exporters Association) และ กรมส่งเสริมการค้าระหว่างประเทศ (DITP)</p>
+
+        <div class="export-hero">
+          <img src="assets/images/เครื่อง.jpg" alt="วัตถุดิบอาหารไทยเพื่อการส่งออก">
+        </div>
+
+        <h3 class="donut-section-title">อัตราส่วนการส่งออกสินค้าอาหารบริโภคของไทย (พ.ศ. 2568)</h3>
+
+        <div class="donut-grid">
+
+          <div class="donut-card" data-tooltip="ข้าวคิดเป็น 11.81% ของมูลค่าส่งออกอาหารบริโภคไทยทั้งหมด">
+            <div class="donut-title">ข้าว</div>
+            <div class="donut donut-rice" style="--p: 11.81" data-percent="11.81">
+              <div class="donut-center">11.81%</div>
+            </div>
+            <div class="donut-percent">
+              <span>หมวดนี้</span>
+              <span>หมวดอื่น</span>
+            </div>
+          </div>
+
+          <div class="donut-card" data-tooltip="เครื่องปรุงรสคิดเป็น 2.71% ของมูลค่าส่งออกอาหารบริโภคไทยทั้งหมด">
+            <div class="donut-title">เครื่องปรุงรส</div>
+            <div class="donut donut-cn" style="--p: 2.71" data-percent="2.71">
+              <div class="donut-center">2.71%</div>
+            </div>
+            <div class="donut-percent">
+              <span>หมวดนี้</span>
+              <span>หมวดอื่น</span>
+            </div>
+          </div>
+
+          <div class="donut-card" data-tooltip="อาหารแช่แข็งคิดเป็น 8.58% ของมูลค่าส่งออกอาหารบริโภคไทยทั้งหมด">
+            <div class="donut-title">อาหารแช่แข็ง</div>
+            <div class="donut donut-frozen" style="--p: 8.58" data-percent="8.58">
+              <div class="donut-center">8.58%</div>
+            </div>
+            <div class="donut-percent">
+              <span>หมวดนี้</span>
+              <span>หมวดอื่น</span>
+            </div>
+          </div>
+
+          <div class="donut-card" data-tooltip="กลุ่มอาหารอื่น ๆ คิดเป็น 76.91% ของมูลค่าส่งออกอาหารบริโภคไทยทั้งหมด">
+            <div class="donut-title">กลุ่มอาหารอื่น ๆ รวม</div>
+            <div class="donut donut-other" style="--p: 76.91" data-percent="76.91">
+              <div class="donut-center">76.91%</div>
+            </div>
+            <div class="donut-percent">
+              <span>หมวดนี้</span>
+              <span>หมวดอื่น</span>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="detail-source">ที่มา: <a href="https://tradereport.moc.go.th" target="_blank" rel="noopener">ระบบสถิติการค้าระหว่างประเทศของไทย กระทรวงพาณิชย์</a></p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- tooltip สำหรับ bar / donut -->
+  <div class="bar-tooltip" id="tooltip"></div>
+
+    <!-- END timeline-container -->
+
+    <!-- NEW WHITE SECTION -->
+    <!-- SECTION: กระแสอาหารโลกใหม่ -->
+    <section class="white-section">
+        <div class="content-container">
+            
+            <h2 class="section-title reveal">กระแสอาหารโลกใหม่</h2>
+
+            <div class="image-box reveal">
+                <img src="assets/images/Gemini_Generated_Image_w317j1w317j1w317.jpg" alt="ภาพกระแสอาหารโลก">
+            </div>
+
+            <p class="highlight-text reveal">
+                อาหารไทยกำลังถูกยกให้เป็น
+                <span class="em">“โมเดลของอาหารแห่งอนาคต”</span>
+            </p>
+
+            <p class="sub-text reveal">
+                เพราะเข้ากับกระแสโลกใหม่หลายอย่าง
+            </p>
+
+            <!-- LIST 1–3 -->
+            <!-- LIST 1–3 แบบมีภาพ + ข้อความ -->
+            <div class="future-list" style="margin-top:40px;">
+
+                <!-- 1. Sustainable Food — รูปซ้าย / ข้อความขวา -->
+                <div class="future-item">
+                    <h4 class="reveal"><i data-lucide="leaf" aria-hidden="true"></i> อาหารยั่งยืน</h4>
+
+                    <div class="future-block reveal">
+                        
+                        <div class="future-img">
+                            <img src="assets/images/ส้มตำ.png" alt="ส้มตำจากวัตถุดิบท้องถิ่น">
+                        </div>
+
+                        <div class="future-text">
+                            <p>
+                                ไทยมีพื้นที่เกษตรอินทรีย์ทะลุ 300,000+ ไร่ และกำลังขยายทุกปี วัตถุดิบหลายชนิดของไทย (เช่น ข่า ตะไคร้ มะกรูด) เป็น 
+                                พืชสมุนไพรที่ปลูกแบบโลว์คาร์บอน อยู่แล้ว จึงตอบโจทย์ตลาดที่ต้อง
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Healthy & Functional Food — รูปขวา / ข้อความซ้าย -->
+                <div class="future-item">
+                    <h4 class="reveal"><i data-lucide="heart-pulse" aria-hidden="true"></i> อาหารสุขภาพและฟังก์ชัน</h4>
+
+                    <div class="future-block reverse reveal">
+                        
+                        <div class="future-img">
+                            <img src="assets/images/น้ำพริกกะปิ.jpeg" alt="น้ำพริกกะปิและผักพื้นบ้าน">
+                        </div>
+
+                        <div class="future-text">
+                            <p>      ไทยมี สมุนไพรและผักพื้นบ้านกว่า 200 ชนิด ที่วิจัยแล้วว่ามีฤทธิ์ทางสุขภาพ เช่น ขมิ้นชัน ตะไคร้ มะขามป้อม กระชายดำ 
+                                รสชาติอาหารไทยเข้มข้นด้วย “สมุนไพรแท้ ๆ” ทำให้จานเดียวมีสารต้านอนุมูลอิสระสูงมาก อาหารไทยหลายเมนูเป็น 
+                                “Naturally Healthy Food” อยู่แล้ว
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Local Ingredients Revival — รูปซ้าย / ข้อความขวา -->
+                <div class="future-item">
+                    <h4 class="reveal"><i data-lucide="sprout" aria-hidden="true"></i> คืนชีวิตวัตถุดิบท้องถิ่น</h4>
+
+                    <div class="future-block reveal">
+                        
+                        <div class="future-img">
+                            <img src="assets/images/แกงไตปลา.jpg" alt="แกงไตปลาจากวัตถุดิบท้องถิ่น">
+                        </div>
+
+                        <div class="future-text">
+                            <p>เมืองไทยมีวัตถุดิบเฉพาะถิ่นจำนวนมาก เช่น ข้าวหอมมะลิ, มะนาวสด, ปลาร้าหมักธรรมชาติ, กะปิคั้นมือ,เครื่องแกงตำสด ร้านไทยในต่างประเทศเริ่มทำ “Thai Local Experience Menu” เช่น เมนูอีสานแท้ เมนูใต้รสเข้ม เมนูเหนือกลิ่นสมุนไพร
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4. Ready-to-Eat Innovation — รูปขวา / ข้อความซ้าย -->
+                <div class="future-item">
+                    <h4 class="reveal"><i data-lucide="package-open" aria-hidden="true"></i> นวัตกรรมอาหารพร้อมทาน</h4>
+
+                    <div class="future-block reverse reveal">
+                        
+                        <div class="future-img ready-meal-frame">
+                            <img class="ready-meal-image" src="assets/images/thai-ready-to-eat.png" alt="ข้าวกะเพราไก่พร้อมทานในบรรจุภัณฑ์แบบไม่มีแบรนด์">
+                        </div>
+
+                        <div class="future-text">
+                            <p>ไทยมีโรงงานแปรรูปอาหารมาตรฐานโลกจำนวนมาก (HACCP, GMP, FDA EU) อาหารไทยหลายเมนูเหมาะสำหรับ RTE
+                                โดยธรรมชาติ เช่น ต้มยำ ผัดไทย แกงต่าง ๆ มีเทคโนโลยีสเตอริไลซ์ อบแห้ง แช่แข็งคุณภาพสูงอยู่แล้ว
+                            </p>
+                            <p class="detail-source">ที่มา: รอเพิ่มแหล่งอ้างอิง</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NEW SECTION: อาหารแห่งอนาคต -->
+            <h3 class="section-subtitle reveal" style="margin-top: 60px;">
+                อาหารแห่งอนาคต ในไทยมีอะไรบ้าง...
+            </h3>
+
+            <!-- BLOCK 1 : ดักแด้ (รูปซ้าย / ข้อความขวา) -->
+            <div class="future-block reveal">
+                <div class="future-img">
+                    <img src="assets/images/Gemini_Generated_Image_qyg8p4qyg8p4qyg8.jpg" alt="ดักแด้หนอนไหม">
+                </div>
+                <div class="future-text">
+                    <h4>ดักแด้โปรตีนสูง</h4>
+                    <p>การปรับตัวของเกษตรกรผู้เลี้ยงจิ้งหรีดในภาคอีสาน เพื่อยกระดับฟาร์มสู่มาตรฐานสากล 
+                        ตอบรับกระแสความต้องการโปรตีนจากแมลงซึ่งเป็นอาหารแห่งอนาคตของโลก</p>
+                </div>
+            </div>
+
+            <!-- BLOCK 2 : ไข่ผำ (รูปขวา / ข้อความซ้าย) -->
+            <div class="future-block reverse reveal">
+                <div class="future-img">
+                    <img src="assets/images/Gemini_Generated_Image_2yleo62yleo62yle.jpg" alt="ไข่ผำ โปรตีนจากพืช">
+                </div>
+                <div class="future-text">
+                    <h4>ไข่ผำ (Plant-based protein)</h4>
+                    <p>ไข่ผำ” เป็นพืชน้ำขนาดเล็กที่มีคุณค่าทางโภชนาการสูง มีลักษณะเป็นเม็ดเล็ก ๆ 
+                        สีเขียวคล้ายไข่ปลาและกำลังได้รับความนิยมมากขึ้นในฐานะซูเปอร์ฟู้ดของอนาคต 
+                        เพราะมีโปรตีนสูง อุดมไปด้วยวิตามินและแร่ธาตุที่เป็นประโยชน์ต่อร่างกาย “ไข่ผำ” 
+                        จึงเป็นอาหารที่ตอบโจทย์ผู้ที่รักสุขภาพและใส่ใจสิ่งแวดล้อม </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+        <!-- Future Protein Section -->
+    <section class="white-section future-protein-section">
+        <div class="content-container">
+
+            <h2 class="section-title">โปรตีนแห่งอนาคต</h2>
+
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/dm-MP9eVv6g?si=WNs4ovUiIQJHoR-o"
+                    title="Protein Future"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <p class="video-desc">
+                โปรตีนแห่งอนาคตเป็นหัวข้อสำคัญที่ทั่วโลกให้ความสนใจ 
+                โดยเฉพาะโปรตีนจากพืช โปรตีนสังเคราะห์ และแหล่งโปรตีนทางเลือกที่ยั่งยืน 
+                เพื่อรองรับความต้องการอาหารในอนาคตที่เพิ่มขึ้นอย่างต่อเนื่อง
+            </p>
+
+        </div>
+    </section>
+
+
+        <!-- Export Growth Section -->
+    <section class="white-section export-growth-section chart-animate">
+        <div class="content-container">
+            <h2 class="section-title">อัตราการเติบโตของตลาดการส่งออกอาหารไทย (10 ปีย้อนหลัง)</h2>
+
+            <canvas id="exportChart"></canvas>
+
+            <p class="chart-desc">
+                จากข้อมูลการส่งออกอาหารไทยในช่วง 10 ปีที่ผ่านมา
+                จะพบว่าอุตสาหกรรมอาหารยังคงเติบโตอย่างต่อเนื่อง
+                โดยมีปัจจัยสำคัญมาจากความนิยมอาหารไทยทั่วโลก
+                และมาตรฐานความปลอดภัยด้านอาหารที่เป็นที่ยอมรับสากล
+            </p>
+            <p class="detail-source">ที่มา: <a href="https://tradereport.moc.go.th/" target="_blank" rel="noopener">กระทรวงพาณิชย์ (Ministry of Commerce)</a></p>
+        </div>
+    </section>
+
+
+
+    <!-- สิ่งที่โลกมองหา และ ไทยตอบได้ -->
+    <!-- ส่วนที่ 1: สิ่งที่โลกมองหา และไทยตอบได้ -->
+    <section id="global-demand" class="global-demand-section">
+    <div class="container">
+
+        <h2 class="section-title">
+            <span class="yellow-text">สิ่งที่โลกมองหา</span> <br>
+            <span class="black-text">และ ไทยตอบได้...</span>
+        </h2>
+
+
+        <p class="section-subtitle">
+        ทั่วโลกกำลังมองหาอาหารที่ดีต่อโลก 
+        <span class="red-text">ดีต่อสุขภาพ</span> 
+        และยังมีตัวตนชัดเจนในรสชาติ
+        อาหารไทย 
+        <span class="orange-text">ตอบโจทย์</span> 
+        ครบทั้ง 3 ข้อ—ทั้งวัตถุดิบท้องถิ่น สูตรดั้งเดิม และการพัฒนา
+        แพ็กเกจยั่งยืน นี่คือ 
+        <span class="green-text">“ความพอดี”</span> 
+        ที่ทำให้ไทยกลายเป็นต้นแบบของอาหารยุคใหม่
+        </p>
+
+        <div class="features-grid">
+
+        <article class="feature-card" data-animate>
+            <h3>อาหารคาร์บอนต่ำ</h3>
+            <p>วัตถุดิบท้องถิ่นใกล้แหล่งผลิต ลดการขนส่งและปล่อยก๊าซคาร์บอนต่ำ — เหมาะกับตลาดยุคใหม่ที่ใส่ใจสิ่งแวดล้อม</p>
+            <img src="assets/images/low-carbon-food.png" alt="">
+        </article>
+
+        <article class="feature-card" data-animate>
+            <h3>รสชาติต้นตำรับ</h3>
+            <p>สูตรดั้งเดิม + วิธีทำที่มีเอกลักษณ์เฉพาะตัว</p>
+            <img src="assets/images/authentic-taste.png" alt="">
+        </article>
+
+        <article class="feature-card" data-animate>
+            <h3>บรรจุภัณฑ์ยั่งยืน</h3>
+            <p>บรรจุภัณฑ์ที่ย่อยสลายได้ + งานออกแบบใหม่</p>
+            <img src="assets/images/sustainable-packaging.png" alt="">
+        </article>
+
+        </div>
+
+    </div>
+    </section>
+
+
+
+    <!-- คุณเป็นสายอาหารแบบไหน? -->
+    <!-- =========================
+     SECTION 2 : สายอาหาร
+========================= -->
+<!-- SECTION 2 : สายอาหาร -->
+    <section id="foodTypeSelect" class="foodtype-section">
+        <div class="container">
+
+            <h2 class="foodtype-title">
+                คุณเป็นสายอาหาร <span class="highlight-yellow">แบบไหน?</span>
+            </h2>
+
+            <p class="foodtype-subtitle">
+                เลือกสไตล์การกินที่ตรงกับคุณที่สุด
+            </p>
+
+            <div class="foodtype-grid">
+
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('spicy')">
+                    <span class="foodtype-icon" aria-hidden="true">🌶️</span>
+                    <h3>สายจัด<span class="red">จ้าน</span></h3>
+                </button>
+
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('soft')">
+                    <span class="foodtype-icon" aria-hidden="true">🥥</span>
+                    <h3>สายนุ่ม<span class="yellow-text">ละมุน</span></h3>
+                </button>
+
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('healthy')">
+                    <span class="foodtype-icon" aria-hidden="true">🌿</span>
+                    <h3>สาย<span class="green">สุขภาพ</span></h3>
+                </button>
+
+                <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('modern')">
+                    <span class="foodtype-icon" aria-hidden="true">✨</span>
+                    <h3>สายทัน<span class="purple">สมัย</span></h3>
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- หน้ารายละเอียด -->
+    <section id="foodTypeDetail" class="foodtype-section hidden">
+        <div class="container" style="text-align:center;">
+
+            <h2 id="foodTypeTitle" class="foodtype-title"></h2>
+
+            <img id="foodTypeImg" class="detail-img" src="" alt="" style="display:none;">
+
+            <p id="foodTypeDesc" class="foodtype-subtitle" style="max-width:600px; margin:auto;"></p>
+
+            <div id="foodDetailContainer" class="detail-container"></div>
+
+            <button class="back-btn" onclick="backToFoodType()">ย้อนกลับ</button>
+        </div>
+    </section>
+
+
+
+    <!-- อาหารไทยจานโปรดคุณคืออะไร -->
+    <!-- =========================
+     SECTION 3 : อาหารไทยจานโปรด
+========================= -->
+    <section id="favfood-section" class="white-section">
+        <h2 class="section-title">อาหารไทยจานโปรดคุณคืออะไร?</h2>
+        
+
+        <!-- หน้าเลือกเมนู -->
+        <div id="favFoodSelect" class="favfood-select">
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('tomyum')">
+                <img src="assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.png" alt="ต้มยำกุ้ง">
+                
+                <h3>ต้มยำกุ้ง</h3>
+            </button>
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('padthai')">
+                <img src="assets/images/favfooddetail/ผัดไทย_จานโปรด.png" alt="ผัดไทย">
+                <h3>ผัดไทย</h3>
+            </button>
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('greencurry')">
+                <img src="assets/images/favfooddetail/แกงเขียวหวาน_จานโปรด.png" alt="แกงเขียวหวาน">
+                <h3>แกงเขียวหวาน</h3>
+            </button>
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('taipla')">
+                <img src="assets/images/favfooddetail/แกงไตปลา_จานโปรด.png" alt="แกงไตปลา">
+                <h3>แกงไตปลา</h3>
+            </button>
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('stickyrice')">
+                <img src="assets/images/favfooddetail/ข้าวเหนียวมะม่วง_จานโปรด.png" alt="ข้าวเหนียวมะม่วง">
+                <h3>ข้าวเหนียวมะม่วง</h3>
+            </button>
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('redcurry')">
+                <img src="assets/images/favfooddetail/แกงมัสมั่นไก่_จานโปรด.png" alt="แกงมัสมั่น">
+                <h3>แกงมัสมั่น</h3>
+            </button>
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('tomkakai')">
+                <img src="assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png" alt="ต้มข่าไก่">
+                <h3>ต้มข่าไก่</h3>
+            </button>
+
+            <button type="button" class="menu-card" onclick="showFoodDetail('kaosoi')">
+                <img src="assets/images/favfooddetail/ข้าวซอย_จานโปรด.png" alt="ข้าวซอย">
+                <h3>ข้าวซอย</h3>
+            </button>
+
+        </div>
+
+                <!-- หน้ารายละเอียดเมนู -->
+        <!-- หน้ารายละเอียดเมนู -->
+        <div id="favFoodDetail" class="favfood-detail hidden">
+
+
+        <h2 id="foodTitle"></h2>
+        <img id="foodImg" class="detail-img" />
+
+
+        <!-- กล่องข้อมูลซ้าย-ขวาแบบรูป Canva -->
+        <div class="food-detail-grid">
+        <div class="left-box">
+        <h3>ประวัติโดยย่อ</h3>
+        <p id="foodHistory" class="detail-text"></p>
+        <p id="foodSource" class="detail-source"></p>
+        </div>
+
+
+        <div class="right-box">
+        <h3>วัตถุดิบหลัก</h3>
+        <ul id="foodIngredients" class="detail-list"></ul>
+        </div>
+        </div>
+
+
+        <button class="back-btn" onclick="backToMenu()">ลองเปลี่ยนเมนูดูไหม</button>
+        </div>
+        </section>
+
+    
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="credit-bar">
+        <div class="credit-logos">
+            <span class="credit-logo"><img src="assets/images/logos/tcij.jpg" alt="Thai PBS"></span>
+            <span class="credit-logo"><img src="assets/images/logos/thaipbs-locals.png" alt="Thai PBS Locals"></span>
+            <span class="credit-logo"><img src="assets/images/logos/informatics-msu.png" alt="คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม"></span>
+            <span class="credit-logo"><img src="assets/images/logos/msu-university.png" alt="มหาวิทยาลัยมหาสารคาม"></span>
+
+        </div>
+        <p class="credit-text">
+            ผลงานวารสารศาสตร์เชิงปฏิสัมพันธ์ (Interactive Journalism) ว่าด้วยวิวัฒนาการและโอกาสของอาหารไทยสู่ครัวโลก<br>
+            ภายใต้ความร่วมมือระหว่าง Thai PBS Locals และ คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม<br>
+            ดนตรีประกอบ: Audio Collect และ Suandok sound therapy<br>
+            © 2025-2026 Thai PBS Locals & IT MSU
+        </p>
+
+        <div class="credit-team">
+            <h4 class="credit-team-title">Development Team</h4>
+            <ul class="credit-team-list">
+                <li><span class="team-th">นายภัทรพล ไชยพันธ์</span><span class="team-en">Phatarapol Chaiyaphan</span></li>
+                <li><span class="team-th">นายมานุวัฒน์ ภูสีดิน</span><span class="team-en">Manuwat Phuseedin</span></li>
+                <li><span class="team-th">นายวินัย สารุณา</span><span class="team-en">Winai Saruna</span></li>
+                <li><span class="team-th">นายพุทธดา หาญนอก</span><span class="team-en">Putthada Hannok</span></li>
+                <li><span class="team-th">นายปนิทาน เกลี้ยงรส</span><span class="team-en">Panithan Kliangrot</span></li>
+                <li><span class="team-th">นายก้องเกียรติ สุ่มมาตย์</span><span class="team-en">Kongkiat Summat</span></li>
+            </ul>
+        </div>
+    </footer>
+
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    
+    <script src="script/main.js"></script>
+
+</body>
+</html>
