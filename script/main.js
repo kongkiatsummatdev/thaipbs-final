@@ -1064,6 +1064,7 @@ function backToMenu() {
     autoStartEnabled = false;
     document.removeEventListener('click', tryAutoStart);
     document.removeEventListener('keydown', tryAutoStart);
+    document.removeEventListener('scroll', tryAutoStart);
   }
 
   async function tryAutoStart(event) {
@@ -1088,5 +1089,7 @@ function backToMenu() {
 
   document.addEventListener('click', tryAutoStart);
   document.addEventListener('keydown', tryAutoStart);
+  // Retry on the first scroll; scrolling cannot unlock blocked autoplay.
+  document.addEventListener('scroll', tryAutoStart, { passive: true, once: true });
   tryAutoStart();
 })();
