@@ -899,7 +899,7 @@ function showFoodDetail(menu) {
     const historySource = data.source
         ? '<a href="' + data.source + '" target="_blank" rel="noopener">' + data.source + '</a>'
         : "รอเพิ่มแหล่งอ้างอิง";
-    document.getElementById("foodSource").innerHTML = "แหล่งที่มาข้อมูล: " + historySource;
+    // document.getElementById("foodSource").innerHTML = "แหล่งที่มาข้อมูล: " + historySource;
 
     const ul = document.getElementById("foodIngredients");
     ul.innerHTML = "";
