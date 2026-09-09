@@ -574,13 +574,12 @@ ScrollTrigger.create({
 
 const foodTypeData = {
     spicy: {
-        title: "สายจัดจ้าน 🔥",
+        title: "สายจัดจ้าน",
         img: "assets/images/รูปต้มยำกุ้ง .png",
         desc: "เผ็ด เปรี้ยว เค็มเข้มข้น เหมาะสำหรับคนรักความท้าทาย",
         blocks: [
             {
                 color: "#ff3b30",
-                icon: "🌶️",
                 title: "รสชาติประจำสายนี้",
                 desc: [
                     "ชอบรสจัด เด็ดทุกสัมผัส",
@@ -589,7 +588,6 @@ const foodTypeData = {
             },
             {
                 color: "#ff3b30",
-                icon: "🍜",
                 title: "เมนูที่ใช่",
                 desc: [
                     "ต้มยำทะเล",
@@ -601,13 +599,12 @@ const foodTypeData = {
     },
 
     soft: {
-        title: "สายนุ่มละมุน 🧡",
+        title: "สายนุ่มละมุน",
         img: "assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png",
         desc: "สายหวานนุ่ม ไม่เผ็ด ไม่จัด อารมณ์ละมุนๆ",
         blocks: [
             {
                 color: "#ff9f0a",
-                icon: "🥥",
                 title: "รสชาติประจำสายนี้",
                 desc: [
                     "อบอุ่น อ่อนโยน",
@@ -616,7 +613,6 @@ const foodTypeData = {
             },
             {
                 color: "#ff9f0a",
-                icon: "🍲",
                 title: "เมนูที่ใช่",
                 desc: [
                     "แกงเขียวหวาน",
@@ -627,13 +623,12 @@ const foodTypeData = {
     },
 
     healthy: {
-        title: "สายสุขภาพ 💚",
+        title: "สายสุขภาพ",
         img: "assets/images/น้ำพริกกะปิ.jpeg",
         desc: "เน้นกินดี อยู่ดี สายคลีนตัวจริง",
         blocks: [
             {
                 color: "#34c759",
-                icon: "💚",
                 title: "บุคลิกของสายนี้",
                 desc: [
                     "มีวินัย ชอบวางแผน",
@@ -642,7 +637,6 @@ const foodTypeData = {
             },
             {
                 color: "#34c759",
-                icon: "🥗",
                 title: "เมนูที่ใช่",
                 desc: [
                     "สลัดอกไก่",
@@ -654,13 +648,12 @@ const foodTypeData = {
     },
 
     modern: {
-        title: "สายทันสมัย ✨",
+        title: "สายทันสมัย",
         img: "assets/images/รูปผัดไทย สไตล์ อเมริกา.png",
         desc: "สนุกกับการผสมรสชาติไทยเข้ากับไอเดียใหม่และวัฒนธรรมร่วมสมัย",
         blocks: [
             {
                 color: "#a734c7ff",
-                icon: "✨",
                 title: "บุคลิกของสายนี้",
                 desc: [
                     "ครีเอทีฟ ไอเดียเยอะ ชอบของใหม่ไม่จำเจ"
@@ -669,7 +662,6 @@ const foodTypeData = {
             },
             {
                 color: "#a734c7ff",
-                icon: "🍔",
                 title: "เมนูที่ใช่",
                 desc: [
                     "ผัดไทยฟิวชัน, เบอร์เกอร์ไทยสไตล์, ข้าวหน้าหมูไทย-เกาหลี"
@@ -679,7 +671,6 @@ const foodTypeData = {
             },
             {
                 color: "#a734c7ff",
-                icon: "♻️",
                 title: "เทรนด์อาหารโลกที่เข้ากับสายนี้:",
                 desc: [
                     "อาหารคาร์บอนต่ำ อาหารฟิวชัน และความยั่งยืน"
@@ -711,10 +702,11 @@ function showFoodTypeDetail(type) {
     const container = document.getElementById("foodDetailContainer");
     container.innerHTML = "";
 
-    data.blocks.forEach(b => {
+    data.blocks.forEach((b, index) => {
         container.innerHTML += `
             <div class="detail-box" style="border-left-color:${b.color}">
-                <h3><span class="detail-icon">${b.icon}</span>${b.title}</h3>
+                <span class="detail-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+                <h3>${b.title}</h3>
                 ${b.desc.map(text => `<p>${text}</p>`).join("")}
             </div>
         `;

@@ -44,7 +44,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style/custom.css">
+    <link rel="stylesheet" href="style/custom.css?v=20260909-futuretech">
+    <link rel="stylesheet" href="style/story-motion.css?v=20260909-futuretech">
 </head>
 
 <body>
@@ -652,7 +653,7 @@
 
     <!-- NEW WHITE SECTION -->
     <!-- SECTION: กระแสอาหารโลกใหม่ -->
-    <section class="white-section">
+    <section id="food-futures" class="white-section">
         <div class="content-container">
             
             <h2 class="section-title reveal">กระแสอาหารโลกใหม่</h2>
@@ -753,6 +754,18 @@
             <h3 class="section-subtitle reveal" style="margin-top: 60px;">
                 อาหารแห่งอนาคต ในไทยมีอะไรบ้าง...
             </h3>
+
+            <div class="future-tech-stage reveal" aria-hidden="true">
+                <img src="assets/images/future-food-biotech.png" alt="" loading="lazy">
+                <div class="future-tech-grid"></div>
+                <div class="future-tech-scan"></div>
+                <span class="future-tech-orbit orbit-one"></span>
+                <span class="future-tech-orbit orbit-two"></span>
+                <span class="future-tech-particle particle-one"></span>
+                <span class="future-tech-particle particle-two"></span>
+                <span class="future-tech-particle particle-three"></span>
+                <span class="future-tech-particle particle-four"></span>
+            </div>
 
             <!-- BLOCK 1 : ดักแด้ (รูปซ้าย / ข้อความขวา) -->
             <div class="future-block reveal">
@@ -896,23 +909,19 @@
             <div class="foodtype-grid">
 
                 <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('spicy')">
-                    <span class="foodtype-icon" aria-hidden="true">🌶️</span>
-                    <h3>สายจัด<span class="red">จ้าน</span></h3>
+                    <h3><span class="taste-prefix">สาย</span><span class="taste-word">จัดจ้าน</span></h3>
                 </button>
 
                 <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('soft')">
-                    <span class="foodtype-icon" aria-hidden="true">🥥</span>
-                    <h3>สายนุ่ม<span class="yellow-text">ละมุน</span></h3>
+                    <h3><span class="taste-prefix">สาย</span><span class="taste-word">นุ่มละมุน</span></h3>
                 </button>
 
                 <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('healthy')">
-                    <span class="foodtype-icon" aria-hidden="true">🌿</span>
-                    <h3>สาย<span class="green">สุขภาพ</span></h3>
+                    <h3><span class="taste-prefix">สาย</span><span class="taste-word">สุขภาพ</span></h3>
                 </button>
 
                 <button type="button" class="foodtype-card" onclick="showFoodTypeDetail('modern')">
-                    <span class="foodtype-icon" aria-hidden="true">✨</span>
-                    <h3>สายทัน<span class="purple">สมัย</span></h3>
+                    <h3><span class="taste-prefix">สาย</span><span class="taste-word">ทันสมัย</span></h3>
                 </button>
 
             </div>
@@ -932,7 +941,7 @@
 
             <div id="foodDetailContainer" class="detail-container"></div>
 
-            <button class="back-btn" onclick="backToFoodType()">ย้อนกลับ</button>
+            <button type="button" class="back-btn" onclick="backToFoodType()"><span class="back-arrow" aria-hidden="true"></span><span>เลือกสไตล์ใหม่</span></button>
         </div>
     </section>
 
@@ -1017,7 +1026,7 @@
         </div>
 
 
-        <button class="back-btn" onclick="backToMenu()">ลองเปลี่ยนเมนูดูไหม</button>
+        <button type="button" class="back-btn" onclick="backToMenu()"><span class="back-arrow" aria-hidden="true"></span><span>สำรวจจานอื่น</span></button>
         </div>
         </section>
 
@@ -1067,7 +1076,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     
-    <script src="script/main.js"></script>
+    <script src="script/main.js?v=20260909-futuretech"></script>
+    <script src="script/story-motion.js?v=20260909-futuretech"></script>
 
 </body>
 </html>

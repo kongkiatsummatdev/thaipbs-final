@@ -1,0 +1,646 @@
+/* Scoped to the story from “กระแสอาหารโลกใหม่” onward. */
+#food-futures {
+  background: radial-gradient(ellipse at 12% 12%, #f0ecd9 0, transparent 40%), #fffdf8;
+}
+
+/* Each section behaves like a new editorial chapter. */
+.story-section {
+  --story-bg: #fff8eb;
+  --story-ink: #3f251c;
+  --story-accent: #c8542f;
+  --story-accent-soft: #efb960;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  min-height: 88vh;
+  background: var(--story-bg) !important;
+  color: var(--story-ink);
+  box-shadow: 0 -22px 58px rgba(43, 31, 23, .12);
+}
+.story-section + .story-section {
+  margin-top: -34px;
+  border-radius: 54px 54px 0 0;
+}
+.story-section[data-story-theme="protein"] {
+  --story-bg: #18372e;
+  --story-ink: #fff5d8;
+  --story-accent: #f0b85c;
+  --story-accent-soft: #7eac8a;
+}
+.story-section[data-story-theme="data"] {
+  --story-bg: #e7f2f3;
+  --story-ink: #173e49;
+  --story-accent: #287f91;
+  --story-accent-soft: #ef7f5f;
+}
+.story-section[data-story-theme="answer"] {
+  --story-bg: #fff0bd;
+  --story-ink: #3e3018;
+  --story-accent: #d65a32;
+  --story-accent-soft: #66864c;
+}
+.story-section[data-story-theme="personality"] {
+  --story-bg: #f7eee8;
+  --story-ink: #422a22;
+  --story-accent: #ad4231;
+  --story-accent-soft: #ca8d54;
+}
+.story-section[data-story-theme="favourite"] {
+  --story-bg: #f0d9cf;
+  --story-ink: #4b201d;
+  --story-accent: #af392f;
+  --story-accent-soft: #db905e;
+}
+.story-section > * { position: relative; z-index: 2; }
+.story-section::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: min(62vw, 850px);
+  aspect-ratio: 1;
+  right: -20vw;
+  top: calc(-25vw + var(--section-shift, 0px));
+  border-radius: 42% 58% 67% 33% / 45% 38% 62% 55%;
+  background:
+    radial-gradient(circle at 30% 28%, color-mix(in srgb, var(--story-accent-soft) 46%, transparent), transparent 56%),
+    color-mix(in srgb, var(--story-accent) 9%, transparent);
+  filter: blur(1px);
+  opacity: .72;
+  animation: chapter-ambient 18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes chapter-ambient {
+  from { transform: translate3d(-2%, -2%, 0) rotate(-5deg) scale(.96); }
+  to { transform: translate3d(3%, 4%, 0) rotate(7deg) scale(1.05); }
+}
+.chapter-marker {
+  width: min(1120px, calc(100% - 8px));
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto clamp(50px, 7vw, 90px);
+  color: var(--story-accent);
+  font-family: 'Sarabun', sans-serif;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.chapter-marker strong { font-size: 1rem; font-weight: 600; letter-spacing: .04em; }
+.chapter-marker i { height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; }
+.story-page-open > .chapter-marker {
+  opacity: 1;
+  transform: none;
+  transition: opacity .7s ease .05s, transform .9s cubic-bezier(.2,.75,.2,1) .05s;
+}
+.story-page-open > .chapter-marker i {
+  transform: scaleX(1);
+  transition: transform 1.25s cubic-bezier(.2,.75,.2,1) .3s;
+}
+.story-section .section-title,
+.story-section .foodtype-title {
+  color: var(--story-ink);
+}
+.story-heading .story-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(.75em) rotate(2deg);
+}
+.story-page-open .story-heading .story-word {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition:
+    opacity .75s ease calc(.12s + var(--word-index) * 70ms),
+    filter .85s ease calc(.12s + var(--word-index) * 70ms),
+    transform .9s cubic-bezier(.16,.8,.25,1) calc(.12s + var(--word-index) * 70ms);
+}
+.story-reveal-item {
+  opacity: 0;
+  transform: translateY(42px) scale(.985);
+  filter: blur(5px);
+}
+.story-reveal-item.story-item-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+  transition: opacity .8s ease, transform 1s cubic-bezier(.16,.8,.25,1), filter .8s ease;
+}
+.story-section .future-item:nth-child(even).story-reveal-item:not(.story-item-visible),
+.story-section .feature-card:nth-child(even).story-reveal-item:not(.story-item-visible),
+.story-section .menu-card:nth-child(even).story-reveal-item:not(.story-item-visible) {
+  transform: translateY(42px) translateX(22px) rotate(.5deg);
+}
+.story-section .future-item:nth-child(odd).story-reveal-item:not(.story-item-visible),
+.story-section .feature-card:nth-child(odd).story-reveal-item:not(.story-item-visible),
+.story-section .menu-card:nth-child(odd).story-reveal-item:not(.story-item-visible) {
+  transform: translateY(42px) translateX(-22px) rotate(-.5deg);
+}
+.story-section .story-reveal-item.story-item-visible { transform: none; }
+.story-section[data-story-theme="protein"] .section-title,
+.story-section[data-story-theme="protein"] .video-desc { color: var(--story-ink); }
+.story-section[data-story-theme="protein"] .video-wrapper {
+  border: 1px solid rgba(255, 245, 216, .3);
+  box-shadow: 0 34px 80px rgba(2, 17, 12, .45);
+}
+.story-section[data-story-theme="data"] .chart-desc,
+.story-section[data-story-theme="data"] .detail-source { color: var(--story-ink); }
+#global-demand .black-text { color: var(--story-ink); }
+#global-demand .yellow-text { color: #bd461f; }
+#global-demand .section-subtitle { color: var(--story-ink); }
+#favfood-section .section-title {
+  margin-bottom: clamp(28px, 4vw, 46px);
+  color: var(--story-ink);
+}
+#favfood-section .favfood-select { margin-top: 0; }
+.export-controls button:focus-visible {
+  outline: 3px solid #c67b35;
+  outline-offset: 4px;
+}
+#food-futures .future-item {
+  position: relative;
+  scroll-margin-top: 80px;
+  border-color: #dddacb;
+  transition: border-color .5s, box-shadow .5s;
+}
+#food-futures .future-item::after {
+  content: '';
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 0;
+  height: 3px;
+  background: #a96d38;
+  transform: scaleX(var(--chapter-progress, 0));
+  transform-origin: left;
+}
+#food-futures .future-item.is-current-chapter {
+  border-color: #b99b66;
+  box-shadow: 0 20px 55px #61542b1a;
+}
+#food-futures .image-box { overflow: hidden; border-radius: 24px; }
+#food-futures .story-image-frame img {
+  transform: translateY(var(--image-travel, 0px)) scale(1.1);
+}
+#food-futures .ready-meal-frame img {
+  transform: translateY(var(--image-travel, 0px)) scale(1.04);
+}
+
+/* Future-food biotechnology scene */
+#food-futures .future-tech-stage {
+  position: relative;
+  width: min(1180px, 100%);
+  aspect-ratio: 16 / 7;
+  margin: 10px auto clamp(50px, 7vw, 90px);
+  overflow: hidden;
+  border: 1px solid rgba(116, 226, 192, .38);
+  border-radius: clamp(22px, 3vw, 38px);
+  background: #061c18;
+  box-shadow:
+    0 35px 85px rgba(5, 36, 29, .28),
+    inset 0 0 70px rgba(65, 229, 183, .08);
+  isolation: isolate;
+  animation: future-stage-glow 5.5s ease-in-out infinite alternate;
+}
+.future-tech-stage > img {
+  position: absolute;
+  inset: -7%;
+  z-index: 0;
+  width: 114%;
+  height: 114%;
+  object-fit: cover;
+  filter: saturate(.92) contrast(1.06) brightness(.76);
+  animation: future-image-drift 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.future-tech-stage::before,
+.future-tech-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.future-tech-stage::before {
+  background:
+    radial-gradient(circle at center, transparent 20%, rgba(1, 18, 15, .08) 48%, rgba(1, 14, 12, .74) 100%),
+    linear-gradient(90deg, rgba(3, 24, 20, .5), transparent 28%, transparent 72%, rgba(3, 24, 20, .5));
+}
+.future-tech-stage::after {
+  inset: 14px;
+  border: 1px solid rgba(139, 240, 208, .24);
+  border-radius: clamp(14px, 2.3vw, 28px);
+  box-shadow: inset 0 0 25px rgba(94, 236, 194, .08);
+}
+.future-tech-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: .2;
+  background-image:
+    linear-gradient(rgba(124, 240, 210, .2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 240, 210, .2) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to top, #000, transparent 72%);
+  transform: perspective(500px) rotateX(57deg) scale(1.5) translateY(30%);
+  transform-origin: bottom;
+  animation: future-grid-drift 9s linear infinite;
+}
+.future-tech-scan {
+  position: absolute;
+  z-index: 3;
+  left: 4%;
+  right: 4%;
+  top: 4%;
+  height: 2px;
+  opacity: .7;
+  background: linear-gradient(90deg, transparent, #8bffe0 25%, #e6c476 50%, #8bffe0 75%, transparent);
+  box-shadow: 0 0 18px #70e7c8;
+  animation: future-scan 7s ease-in-out infinite;
+}
+.future-tech-orbit {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(137, 244, 212, .52);
+  border-left-color: transparent;
+  border-bottom-color: rgba(229, 189, 102, .58);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.future-tech-orbit::before,
+.future-tech-orbit::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a1ffe5;
+  box-shadow: 0 0 15px #7affd8;
+}
+.future-tech-orbit::before { left: 8%; top: 18%; }
+.future-tech-orbit::after { right: 5%; bottom: 24%; background: #e7ba68; box-shadow: 0 0 15px #e7ba68; }
+.orbit-one {
+  width: min(39vw, 500px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  animation: future-orbit-one 17s linear infinite;
+}
+.orbit-two {
+  width: min(31vw, 395px);
+  aspect-ratio: 1;
+  opacity: .7;
+  transform: translate(-50%, -50%) rotate(35deg);
+  animation: future-orbit-two 13s linear infinite reverse;
+}
+.future-tech-particle {
+  --particle-size: 8px;
+  position: absolute;
+  z-index: 4;
+  width: var(--particle-size);
+  height: var(--particle-size);
+  border-radius: 50%;
+  background: rgba(145, 255, 220, .9);
+  box-shadow: 0 0 18px rgba(109, 247, 205, .9);
+  animation: future-particle 6s ease-in-out infinite alternate;
+}
+.particle-one { left: 16%; top: 64%; animation-delay: -1s; }
+.particle-two { --particle-size: 5px; left: 29%; top: 28%; animation-delay: -3.4s; }
+.particle-three { --particle-size: 6px; right: 22%; top: 35%; background: #e7ba68; animation-delay: -2.1s; }
+.particle-four { --particle-size: 4px; right: 12%; bottom: 18%; animation-delay: -4.8s; }
+@keyframes future-stage-glow {
+  from { box-shadow: 0 35px 85px rgba(5, 36, 29, .24), inset 0 0 55px rgba(65, 229, 183, .06); }
+  to { box-shadow: 0 42px 100px rgba(5, 36, 29, .34), inset 0 0 85px rgba(65, 229, 183, .12); }
+}
+@keyframes future-image-drift {
+  from { transform: translate3d(-1.5%, 1%, 0) scale(1.02); }
+  to { transform: translate3d(1.5%, -1%, 0) scale(1.08); }
+}
+@keyframes future-grid-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 52px, 52px 0; }
+}
+@keyframes future-scan {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  12%, 88% { opacity: .7; }
+  50% { transform: translateY(clamp(210px, 30vw, 470px)); opacity: .9; }
+}
+@keyframes future-orbit-one {
+  from { transform: translate(-50%, -50%) rotate(0); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes future-orbit-two {
+  from { transform: translate(-50%, -50%) rotate(35deg); }
+  to { transform: translate(-50%, -50%) rotate(395deg); }
+}
+@keyframes future-particle {
+  from { transform: translate3d(-7px, 12px, 0) scale(.65); opacity: .25; }
+  to { transform: translate3d(10px, -16px, 0) scale(1.25); opacity: 1; }
+}
+.future-tech-stage ~ .future-block {
+  position: relative;
+  padding: clamp(22px, 4vw, 46px);
+  border: 1px solid rgba(78, 187, 157, .32);
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(16, 54, 46, .97), rgba(7, 31, 27, .98));
+  box-shadow: 0 24px 55px rgba(8, 42, 34, .18);
+}
+.future-tech-stage ~ .future-block::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(132, 230, 201, .1);
+  border-radius: 16px;
+  pointer-events: none;
+}
+.future-tech-stage ~ .future-block .future-text h4 { color: #f2c56f; }
+.future-tech-stage ~ .future-block .future-text p { color: #e5f2eb; }
+.future-tech-stage ~ .future-block .future-img {
+  border: 1px solid rgba(143, 235, 208, .28);
+  box-shadow: 0 18px 40px rgba(0, 12, 10, .36);
+}
+@media (max-width: 700px) {
+  #food-futures .future-tech-stage {
+    aspect-ratio: 4 / 5;
+    margin-bottom: 42px;
+  }
+  .future-tech-stage > img { inset: -5% -55%; width: 210%; height: 110%; }
+  .orbit-one { width: 82vw; }
+  .orbit-two { width: 64vw; }
+  @keyframes future-scan {
+    0%, 100% { transform: translateY(0); opacity: 0; }
+    12%, 88% { opacity: .7; }
+    50% { transform: translateY(92vw); opacity: .9; }
+  }
+  .future-tech-stage ~ .future-block { padding: 20px; }
+}
+#global-demand .features-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2.5vw, 30px);
+  align-items: stretch;
+  margin-top: clamp(30px, 3.5vw, 46px);
+}
+#global-demand .section-subtitle { margin-bottom: 0; }
+#global-demand .feature-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(16px, 2vw, 26px);
+}
+#global-demand .feature-card h3 { font-size: clamp(1.25rem, 2.3vw, 1.65rem); }
+#global-demand .feature-card p { flex: 1; }
+#global-demand .feature-card img { height: clamp(160px, 22vw, 280px); }
+@media (max-width: 600px) {
+  #global-demand .features-grid {
+    grid-template-columns: repeat(3, minmax(260px, 82%));
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: 20px;
+  }
+  #global-demand .feature-card { scroll-snap-align: start; }
+  #global-demand .feature-card img { height: 230px; }
+}
+.story-section .feature-card { border-top: 3px solid #b6c2a0; overflow: hidden; }
+.story-section .feature-card:nth-child(2) { border-top-color: #d4a878; }
+.story-section .feature-card:nth-child(3) { border-top-color: #a3b5c0; }
+.story-section .feature-card img,
+.story-section .foodtype-icon,
+.story-section .menu-card img {
+  animation: story-drift 7s ease-in-out var(--drift-delay, 0s) infinite alternate;
+  animation-play-state: paused;
+  translate: var(--look-x, 0px) var(--look-y, 0px);
+  transition: translate .25s ease-out;
+}
+.story-in-view .feature-card img,
+.story-in-view .foodtype-icon,
+.story-in-view .menu-card img { animation-play-state: running; }
+@keyframes story-drift {
+  from { transform: translateY(4px) rotate(-1.5deg); }
+  to { transform: translateY(-7px) rotate(1.5deg); }
+}
+.story-section .foodtype-card,
+.story-section .menu-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.story-section .foodtype-card:hover,
+.story-section .foodtype-card:focus-visible,
+.story-section .menu-card:hover,
+.story-section .menu-card:focus-visible {
+  border-color: #ad793c;
+  box-shadow: 0 22px 44px #66492124;
+}
+.story-section .menu-card:active,
+.story-section .foodtype-card:active { transform: scale(.97); }
+.story-section .detail-box,
+.story-section .food-detail-grid > div {
+  animation: story-detail-in .6s ease-out both;
+}
+.story-section .detail-box:nth-child(2),
+.story-section .food-detail-grid > div:nth-child(2) { animation-delay: .1s; }
+.story-section .detail-box:nth-child(3) { animation-delay: .2s; }
+.story-section #foodImg { animation: story-detail-in .7s ease-out both; }
+@keyframes story-detail-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.export-explorer {
+  max-width: 850px;
+  margin: 0 auto 24px;
+  padding: clamp(20px, 4vw, 36px);
+  border: 1px solid #d8dece;
+  border-radius: 24px;
+  background: #f4f6ed;
+  color: #253c2c;
+}
+.export-explorer-heading { display: flex; justify-content: space-between; gap: 16px; font-size: .95rem; }
+.export-explorer-heading > :last-child { color: #59624e; }
+.export-reading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 24px; padding: 22px 0; }
+.export-year { font: 400 clamp(1.8rem, 4vw, 2.8rem) 'Oxygen', sans-serif; }
+.export-value { font: 700 clamp(2.8rem, 6vw, 4.5rem) 'Oxygen', sans-serif; letter-spacing: -.05em; color: #276540; }
+.export-direction { font-size: 1rem; }
+.export-explorer.is-negative .export-value { color: #a73b32; }
+.export-controls { display: flex; align-items: center; gap: 20px; }
+.export-controls button {
+  flex: 0 0 44px;
+  height: 44px;
+  border: 1px solid #87977b;
+  border-radius: 50%;
+  background: #fff;
+  color: #243d2b;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.export-controls button:disabled { opacity: .3; cursor: default; }
+.export-range-wrap { flex: 1; min-width: 0; }
+.export-range-wrap label { display: block; font-size: .85rem; margin-bottom: 8px; }
+.export-range-wrap input { display: block; width: 100%; height: 28px; accent-color: #385f3f; cursor: ew-resize; }
+.export-range-ends { display: flex; justify-content: space-between; font: .75rem 'Oxygen', sans-serif; }
+.story-motion-paused .story-section *,
+.story-motion-paused .story-section *::before,
+.story-motion-paused .story-section *::after {
+  animation: none !important;
+  transition: none !important;
+}
+.story-motion-paused .story-drift-card img,
+.story-motion-paused .foodtype-icon { translate: none; }
+@media (max-width: 700px) {
+  #food-futures .future-item { scroll-margin-top: 80px; }
+  .export-explorer-heading { flex-direction: column; gap: 4px; }
+  .export-reading { gap: 8px 18px; }
+  .export-direction { flex-basis: 100%; }
+  .export-controls { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-section *, .story-section *::before, .story-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .story-section .story-drift-card img, .story-section .foodtype-icon { translate: none; }
+  #food-futures .story-image-frame img { transform: none; }
+}
+
+/* Food personalities: typography carries the identity, without pictograms. */
+#foodTypeSelect .foodtype-title,
+#foodTypeDetail .foodtype-title {
+  font-family: 'FC Ekaluck', 'Sarabun', sans-serif;
+  font-size: clamp(3rem, 5.5vw, 5.7rem);
+  font-weight: 750;
+  line-height: 1.3;
+}
+#foodTypeSelect .foodtype-grid { max-width: 1120px; gap: 24px; }
+#foodTypeSelect .foodtype-card {
+  --taste-ink: #a63224;
+  --taste-paper: #fbede5;
+  --taste-image: url('../assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.png');
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 330px;
+  padding: clamp(24px, 3.5vw, 42px);
+  border: 1px solid #dfcabb;
+  border-radius: 8px;
+  background: var(--taste-paper);
+  color: var(--taste-ink);
+  text-align: left;
+  box-shadow: none;
+  isolation: isolate;
+}
+#foodTypeSelect .foodtype-card:nth-child(2) {
+  --taste-ink: #805217;
+  --taste-paper: #f6efdf;
+  --taste-image: url('../assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png');
+}
+#foodTypeSelect .foodtype-card:nth-child(3) {
+  --taste-ink: #2d583e;
+  --taste-paper: #eaf0e4;
+  --taste-image: url('../assets/images/น้ำพริกกะปิ.jpeg');
+}
+#foodTypeSelect .foodtype-card:nth-child(4) {
+  --taste-ink: #54416e;
+  --taste-paper: #eee9f3;
+  --taste-image: url('../assets/images/รูปผัดไทย สไตล์ อเมริกา.png');
+}
+#foodTypeSelect .foodtype-card::before {
+  content: '';
+  position: absolute;
+  inset: -8% -12% -8% 16%;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--taste-image);
+  background-size: cover;
+  background-position: center;
+  opacity: .22;
+  mask-image: linear-gradient(90deg, transparent, #000 55%);
+  animation: taste-background-drift 16s ease-in-out var(--drift-delay, 0s) infinite alternate;
+  animation-play-state: paused;
+}
+#foodTypeSelect.story-in-view .foodtype-card::before { animation-play-state: running; }
+@keyframes taste-background-drift {
+  from { transform: translate3d(-6px, 5px, 0) scale(1.02) rotate(-2deg); }
+  to { transform: translate3d(7px, -6px, 0) scale(1.1) rotate(2deg); }
+}
+#foodTypeSelect .foodtype-card h3 {
+  position: relative;
+  margin: 0;
+  color: inherit;
+  font-family: 'FC Ekaluck', 'Sarabun', sans-serif;
+  font-weight: 800;
+  text-align: left;
+  line-height: 1.25;
+}
+.taste-prefix { display: block; font-size: 1.65rem; font-weight: 500; }
+.taste-word {
+  display: inline-block;
+  position: relative;
+  font-size: clamp(3.1rem, 5.5vw, 5.4rem);
+  translate: var(--look-x, 0px) 0;
+  transition: translate .25s ease-out, transform .4s ease;
+}
+.taste-word::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -3px;
+  height: 4px;
+  background: currentColor;
+  transform: scaleX(.16);
+  transform-origin: left;
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
+}
+#foodTypeSelect .foodtype-card:hover,
+#foodTypeSelect .foodtype-card:focus-visible { border-color: var(--taste-ink); transform: translateY(-5px); box-shadow: 0 20px 35px #352b1612; }
+.foodtype-card:hover .taste-word,
+.foodtype-card:focus-visible .taste-word { transform: translateX(6px); }
+.foodtype-card:hover .taste-word::after,
+.foodtype-card:focus-visible .taste-word::after { transform: scaleX(1); }
+#foodTypeDetail .foodtype-subtitle { font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
+#foodTypeDetail .detail-box {
+  position: relative;
+  padding: clamp(28px, 3vw, 42px);
+  border-radius: 6px;
+  border-left-width: 3px;
+  box-shadow: none;
+}
+.detail-number { display: block; margin-bottom: 18px; color: #8d7965; font: 400 1rem 'Oxygen', sans-serif; letter-spacing: .14em; }
+#foodTypeDetail .detail-box h3 {
+  font-family: 'FC Ekaluck', 'Sarabun', sans-serif;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 750;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+#foodTypeDetail .detail-box p { font-size: 1.3rem; line-height: 1.85; }
+.story-section .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 9px 28px 9px 9px;
+  min-height: 64px;
+  border: 1px solid #2c322b;
+  border-radius: 100px;
+  background: #26362b;
+  color: #fffaf0;
+  font: 500 1.1rem 'Sarabun', sans-serif;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background .3s, transform .3s, box-shadow .3s;
+}
+.back-arrow { position: relative; display: block; flex: 0 0 44px; height: 44px; border-radius: 50%; background: #f0dfb9; color: #26362b; transition: transform .3s; }
+.back-arrow::before { content: ''; position: absolute; left: 13px; top: 22px; width: 19px; height: 1px; background: currentColor; }
+.back-arrow::after { content: ''; position: absolute; left: 13px; top: 18px; width: 8px; height: 8px; border-left: 1px solid; border-bottom: 1px solid; transform: rotate(45deg); }
+.story-section .back-btn:hover { background: #394f3e; transform: translateY(-3px); box-shadow: 0 12px 24px #26362b20; }
+.story-section .back-btn:hover .back-arrow { transform: translateX(-3px); }
+.story-motion-paused .taste-word { translate: none; }
+@media (max-width: 700px) {
+  #foodTypeSelect .foodtype-card { min-height: 280px; gap: 24px; padding: 26px; }
+  .taste-word { font-size: clamp(3.1rem, 11vw, 4.4rem); }
+  #foodTypeDetail .detail-container { grid-template-columns: minmax(0, 1fr); }
+  #foodTypeDetail .detail-box p { font-size: 1.2rem; }
+  .story-section .back-btn { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .taste-word { translate: none; }
+}
