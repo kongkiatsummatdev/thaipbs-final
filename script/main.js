@@ -98,11 +98,11 @@ document.querySelectorAll('.steam-wisp').forEach((wisp, index) => {
 ====================================================== */
 const locations = {
   intro: { scale: 0.94, x: 50, y: 50 },
-  jp: { scale: 1.28, x: 67, y: 38 },
-  cn: { scale: 1.28, x: 64, y: 37 },
-  au: { scale: 1.24, x: 68, y: 59 },
-  fr: { scale: 1.26, x: 54, y: 37 },
-  us: { scale: 1.24, x: 39, y: 38 },
+  jp: { scale: 1.6, x: 72.10, y: 34.16 },
+  cn: { scale: 1.6, x: 66.33, y: 36.57 },
+  au: { scale: 1.6, x: 69.32, y: 56.01 },
+  fr: { scale: 1.6, x: 54.69, y: 31.45 },
+  us: { scale: 1.6, x: 31.84, y: 33.28 },
   overview: { scale: 0.94, x: 50, y: 50 }
 };
 
@@ -118,6 +118,8 @@ function calculateTransform(loc) {
    MAP INITIAL POSITION
 ====================================================== */
 const initialPos = calculateTransform(locations.intro);
+// Keep each flag's centre on its geographic anchor throughout the reveal.
+gsap.set(".flag-icon", { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 0 });
 gsap.set(".map-inner", {
   scale: initialPos.scale,
   xPercent: initialPos.xPercent,
@@ -138,32 +140,61 @@ document.querySelectorAll('.route-path').forEach(path => {
 /* ======================================================
    MAP SCENE CREATOR
 ====================================================== */
+let previousJourneyLocation = locations.intro;
+
 function createScene(targetId, locKey, pathId, flagId) {
-  const targetPos = calculateTransform(locations[locKey]);
+  const destination = locations[locKey];
+  const departure = previousJourneyLocation;
+  previousJourneyLocation = destination;
+  const route = document.querySelector(pathId);
+  const routeLength = route.getTotalLength();
+  const viewBox = route.ownerSVGElement.viewBox.baseVal;
+  const start = route.getPointAtLength(0);
+  const end = route.getPointAtLength(routeLength);
+  // Follow the same SVG geometry as the drawing, retaining room for the card
+  // at arrival. Blend from the preceding camera position without pulling back.
+  const offsetX = end.x / viewBox.width * 100 - destination.x;
+  const offsetY = end.y / viewBox.height * 100 - destination.y;
+  const correctionX = departure.x - (start.x / viewBox.width * 100 - offsetX);
+  const correctionY = departure.y - (start.y / viewBox.height * 100 - offsetY);
+  const frames = Array.from({ length: 60 }, (_, index) => {
+    const progress = (index + 1) / 60;
+    const point = route.getPointAtLength(routeLength * progress);
+    const blend = (1 - progress) ** 2;
+    const camera = calculateTransform({
+      scale: departure.scale + (destination.scale - departure.scale) * progress,
+      x: point.x / viewBox.width * 100 - offsetX + correctionX * blend,
+      y: point.y / viewBox.height * 100 - offsetY + correctionY * blend
+    });
+    return { ...camera, duration: 6.5 / 60, ease: "none" };
+  });
 
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: targetId,
-      start: "top bottom",
-      end: "center center",
-      scrub: 1
+      // Pin each journey only after the preceding section has left the screen.
+      // Extra scroll distance gives the route time to travel before the card.
+      start: "top top",
+      end: () => `+=${Math.max(window.innerHeight * 2.4, 1600)}`,
+      pin: true,
+      pinSpacing: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      scrub: 1.5
     }
   });
 
   tl.to(".map-inner", {
-    scale: targetPos.scale,
-    xPercent: targetPos.xPercent,
-    yPercent: targetPos.yPercent,
-    ease: "power1.inOut",
-    duration: 0.75
-  });
+    keyframes: frames,
+    ease: "none"
+  }, 0);
 
   if (pathId) {
     tl.to(pathId, {
       strokeDashoffset: 0,
-      ease: "power1.out",
-      duration: 0.65
-    }, "<0.1");
+      ease: "none",
+      duration: 6.5
+    }, 0);
   }
 
   if (flagId) {
@@ -171,7 +202,7 @@ function createScene(targetId, locKey, pathId, flagId) {
     // scrubbed timeline keeps each flag visible after its country appears.
     tl.to(flagId, {
       scale: 1,
-      duration: 0.22,
+      duration: 0.4,
       ease: "back.out(1.35)"
     }, ">");
   }
@@ -181,9 +212,13 @@ function createScene(targetId, locKey, pathId, flagId) {
   tl.to(`${targetId} .content-card`, {
     opacity: 1,
     y: 0,
-    duration: 0.3,
+    duration: 0.5,
     ease: "back.out(1.4)"
   }, ">");
+
+  // Keep the completed card still for reading, then release the section so
+  // the whole card scrolls out before the next section can start its route.
+  tl.to({}, { duration: 1.8 });
 }
 
 /* ======================================================
@@ -207,7 +242,7 @@ gsap.to(".map-inner", {
   ease: "power1.inOut",
   scrollTrigger: {
     trigger: "#sec-outro",
-    start: "top 85%",
+    start: "top top",
     end: "center center",
     scrub: 1.5
   }
@@ -429,7 +464,8 @@ const growthLabelsPlugin = {
         const values = chart.data.datasets[0].data;
 
         ctx.save();
-        ctx.font = "bold 11px 'Oxygen', 'Arunsawad', sans-serif";
+        const labelFontSize = chart.width < 700 ? 14 : 18;
+        ctx.font = `bold ${labelFontSize}px 'Oxygen', 'Arunsawad', sans-serif`;
         ctx.textAlign = "center";
 
         meta.data.forEach((point, i) => {
@@ -439,7 +475,7 @@ const growthLabelsPlugin = {
 
             ctx.fillStyle = isPositive ? "#1a9c4b" : "#d64545";
             ctx.textBaseline = isPositive ? "bottom" : "top";
-            ctx.fillText(label, point.x, point.y + (isPositive ? -10 : 12));
+            ctx.fillText(label, point.x, point.y + (isPositive ? -14 : 16));
         });
 
         ctx.restore();
@@ -456,9 +492,9 @@ function initChartWithZeros() {
                 data: zeroValues.slice(), // start flat at 0
                 borderColor: "#3b82f6",
                 backgroundColor: "rgba(59, 130, 246, 0.08)",
-                borderWidth: 3,
-                pointRadius: 5,
-                pointHoverRadius: 7,
+                borderWidth: 4,
+                pointRadius: 7,
+                pointHoverRadius: 10,
                 pointBackgroundColor: "#3b82f6",
                 pointBorderColor: "#fff",
                 pointBorderWidth: 2,
@@ -469,15 +505,18 @@ function initChartWithZeros() {
         plugins: [growthLabelsPlugin],
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             layout: {
-                padding: { top: 24, bottom: 8 }
+                padding: { top: 42, right: 18, bottom: 18, left: 12 }
             },
             plugins: {
                 tooltip: {
                     backgroundColor: "rgba(0,0,0,0.85)",
                     titleColor: "#fff",
                     bodyColor: "#ffe5b0",
-                    padding: 10,
+                    padding: 14,
+                    titleFont: { size: 17, weight: "600" },
+                    bodyFont: { size: 17, weight: "600" },
                     callbacks: {
                         label: ctx => `${ctx.parsed.y > 0 ? "+" : ""}${ctx.parsed.y.toFixed(2)}%`
                     }
@@ -486,13 +525,34 @@ function initChartWithZeros() {
             },
             scales: {
                 x: {
-                    title: { display: true, text: "ปี", color: "#555" },
-                    ticks: { color: "#333" },
+                    title: {
+                        display: true,
+                        text: "ปี",
+                        color: "#344b53",
+                        font: { size: 19, weight: "600" },
+                        padding: { top: 14 }
+                    },
+                    ticks: {
+                        color: "#263c44",
+                        font: { size: 17, weight: "500" },
+                        padding: 10
+                    },
                     grid: { display: false }
                 },
                 y: {
-                    title: { display: true, text: "อัตราการเติบโตต่อปี (%)", color: "#555" },
-                    ticks: { color: "#333", callback: v => v + "%" },
+                    title: {
+                        display: true,
+                        text: "อัตราการเติบโตต่อปี (%)",
+                        color: "#344b53",
+                        font: { size: 18, weight: "600" },
+                        padding: { bottom: 14 }
+                    },
+                    ticks: {
+                        color: "#263c44",
+                        font: { size: 17, weight: "500" },
+                        padding: 10,
+                        callback: v => v + "%"
+                    },
                     grid: { color: "rgba(0,0,0,0.08)", borderDash: [4, 4] }
                 }
             },

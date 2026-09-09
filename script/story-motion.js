@@ -14,7 +14,6 @@
 
   const chapterMeta = [
     ['รสชาติของวันพรุ่งนี้', 'future'],
-    ['โปรตีนบทใหม่', 'protein'],
     ['อ่านการเติบโต', 'data'],
     ['คำตอบจากครัวไทย', 'answer'],
     ['ค้นหารสชาติของคุณ', 'personality'],
@@ -108,6 +107,7 @@
 
   const imageFrames = Array.from(start.querySelectorAll('.future-img, .image-box'));
   imageFrames.forEach(frame => frame.classList.add('story-image-frame'));
+  const labSection = start.querySelector('.future-lab-section');
   const movingItems = Array.from(document.querySelectorAll(
     '.story-section .feature-card, .story-section .foodtype-card, .story-section .menu-card'
   ));
@@ -178,6 +178,11 @@
       const progress = Math.max(-1, Math.min(1, (height / 2 - rect.top - rect.height / 2) / height));
       frame.style.setProperty('--image-travel', paused ? '0px' : `${progress * 38}px`);
     });
+    if (labSection) {
+      const rect = labSection.getBoundingClientRect();
+      const progress = Math.max(-1, Math.min(1, (height / 2 - rect.top - rect.height / 2) / height));
+      labSection.style.setProperty('--lab-parallax', paused ? '0px' : `${progress * 34}px`);
+    }
   }
   window.addEventListener('scroll', scheduleFrame, { passive: true });
   window.addEventListener('resize', scheduleFrame, { passive: true });
@@ -200,7 +205,8 @@
         </div>
         <button type="button" class="export-next" aria-label="ปีถัดไป">→</button>
       </div>`;
-    chartCanvas.before(explorer);
+    const chartFrame = chartCanvas.closest('.export-chart-frame');
+    (chartFrame || chartCanvas).before(explorer);
     const slider = explorer.querySelector('input');
     const previous = explorer.querySelector('.export-prev');
     const next = explorer.querySelector('.export-next');

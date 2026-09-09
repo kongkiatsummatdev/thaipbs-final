@@ -21,12 +21,6 @@
   margin-top: -34px;
   border-radius: 54px 54px 0 0;
 }
-.story-section[data-story-theme="protein"] {
-  --story-bg: #18372e;
-  --story-ink: #fff5d8;
-  --story-accent: #f0b85c;
-  --story-accent-soft: #7eac8a;
-}
 .story-section[data-story-theme="data"] {
   --story-bg: #e7f2f3;
   --story-ink: #173e49;
@@ -100,6 +94,7 @@
 .story-section .foodtype-title {
   color: var(--story-ink);
 }
+.title-period { white-space: nowrap; }
 .story-heading .story-word {
   display: inline-block;
   opacity: 0;
@@ -137,12 +132,6 @@
   transform: translateY(42px) translateX(-22px) rotate(-.5deg);
 }
 .story-section .story-reveal-item.story-item-visible { transform: none; }
-.story-section[data-story-theme="protein"] .section-title,
-.story-section[data-story-theme="protein"] .video-desc { color: var(--story-ink); }
-.story-section[data-story-theme="protein"] .video-wrapper {
-  border: 1px solid rgba(255, 245, 216, .3);
-  box-shadow: 0 34px 80px rgba(2, 17, 12, .45);
-}
 .story-section[data-story-theme="data"] .chart-desc,
 .story-section[data-story-theme="data"] .detail-source { color: var(--story-ink); }
 #global-demand .black-text { color: var(--story-ink); }
@@ -178,7 +167,23 @@
   border-color: #b99b66;
   box-shadow: 0 20px 55px #61542b1a;
 }
-#food-futures .image-box { overflow: hidden; border-radius: 24px; }
+#food-futures .image-box {
+  overflow: hidden;
+  margin-bottom: clamp(82px, 7vw, 118px);
+  border-radius: 24px;
+}
+#food-futures .content-container > .highlight-text {
+  position: relative;
+  margin-top: 0;
+}
+#food-futures .content-container > .highlight-text::before {
+  content: '';
+  display: block;
+  width: 68px;
+  height: 2px;
+  margin: 0 auto 28px;
+  background: #bc6a42;
+}
 #food-futures .story-image-frame img {
   transform: translateY(var(--image-travel, 0px)) scale(1.1);
 }
@@ -186,195 +191,187 @@
   transform: translateY(var(--image-travel, 0px)) scale(1.04);
 }
 
-/* Future-food biotechnology scene */
-#food-futures .future-tech-stage {
+/* Future-food laboratory: a light, continuous story scene. */
+#food-futures .future-lab-section {
+  --lab-parallax: 0px;
   position: relative;
-  width: min(1180px, 100%);
-  aspect-ratio: 16 / 7;
-  margin: 10px auto clamp(50px, 7vw, 90px);
+  width: 100vw;
+  height: clamp(640px, 88vh, 900px);
+  margin: clamp(90px, 11vw, 150px) 0 0 calc(50% - 50vw);
+  padding: 0 24px;
   overflow: hidden;
-  border: 1px solid rgba(116, 226, 192, .38);
-  border-radius: clamp(22px, 3vw, 38px);
-  background: #061c18;
-  box-shadow:
-    0 35px 85px rgba(5, 36, 29, .28),
-    inset 0 0 70px rgba(65, 229, 183, .08);
   isolation: isolate;
-  animation: future-stage-glow 5.5s ease-in-out infinite alternate;
+  background: #f5e9dc;
 }
-.future-tech-stage > img {
+.future-lab-wash {
   position: absolute;
-  inset: -7%;
+  inset: 0;
+  pointer-events: none;
+}
+.future-lab-background {
+  position: absolute;
+  inset: 0;
   z-index: 0;
-  width: 114%;
-  height: 114%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f3e4d5;
+}
+.future-lab-background img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  filter: saturate(.92) contrast(1.06) brightness(.76);
-  animation: future-image-drift 18s ease-in-out infinite alternate;
+  object-position: center;
+  filter: saturate(.72) contrast(.9) brightness(1.035);
+  animation: lab-background-drift 18s ease-in-out infinite alternate;
   will-change: transform;
 }
-.future-tech-stage::before,
-.future-tech-stage::after {
-  content: '';
+.future-lab-wash {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(255, 249, 241, .34), rgba(248, 230, 213, .18) 42%, rgba(255, 247, 237, .58)),
+    radial-gradient(circle at 16% 20%, rgba(231, 154, 111, .16), transparent 32%),
+    radial-gradient(circle at 84% 68%, rgba(222, 188, 147, .16), transparent 32%);
+}
+.future-lab-motion {
   position: absolute;
   inset: 0;
   z-index: 1;
+  overflow: hidden;
   pointer-events: none;
 }
-.future-tech-stage::before {
-  background:
-    radial-gradient(circle at center, transparent 20%, rgba(1, 18, 15, .08) 48%, rgba(1, 14, 12, .74) 100%),
-    linear-gradient(90deg, rgba(3, 24, 20, .5), transparent 28%, transparent 72%, rgba(3, 24, 20, .5));
-}
-.future-tech-stage::after {
-  inset: 14px;
-  border: 1px solid rgba(139, 240, 208, .24);
-  border-radius: clamp(14px, 2.3vw, 28px);
-  box-shadow: inset 0 0 25px rgba(94, 236, 194, .08);
-}
-.future-tech-grid {
+.lab-glow {
   position: absolute;
-  inset: 0;
-  z-index: 2;
-  opacity: .2;
-  background-image:
-    linear-gradient(rgba(124, 240, 210, .2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 240, 210, .2) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: linear-gradient(to top, #000, transparent 72%);
-  transform: perspective(500px) rotateX(57deg) scale(1.5) translateY(30%);
-  transform-origin: bottom;
-  animation: future-grid-drift 9s linear infinite;
-}
-.future-tech-scan {
-  position: absolute;
-  z-index: 3;
-  left: 4%;
-  right: 4%;
-  top: 4%;
-  height: 2px;
-  opacity: .7;
-  background: linear-gradient(90deg, transparent, #8bffe0 25%, #e6c476 50%, #8bffe0 75%, transparent);
-  box-shadow: 0 0 18px #70e7c8;
-  animation: future-scan 7s ease-in-out infinite;
-}
-.future-tech-orbit {
-  position: absolute;
-  z-index: 3;
-  left: 50%;
-  top: 50%;
-  border: 1px solid rgba(137, 244, 212, .52);
-  border-left-color: transparent;
-  border-bottom-color: rgba(229, 189, 102, .58);
+  width: min(34vw, 520px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(183, 108, 72, .18);
   border-radius: 50%;
-  pointer-events: none;
+  box-shadow: 0 0 70px rgba(225, 163, 122, .12), inset 0 0 50px rgba(255, 245, 229, .2);
+  animation: lab-orbit 15s ease-in-out infinite alternate;
 }
-.future-tech-orbit::before,
-.future-tech-orbit::after {
+.lab-glow::after {
   content: '';
   position: absolute;
-  width: 7px;
-  height: 7px;
+  width: 9px;
+  height: 9px;
+  top: 15%;
+  left: 17%;
   border-radius: 50%;
-  background: #a1ffe5;
-  box-shadow: 0 0 15px #7affd8;
+  background: #d98a61;
+  box-shadow: 0 0 18px rgba(217, 138, 97, .72);
 }
-.future-tech-orbit::before { left: 8%; top: 18%; }
-.future-tech-orbit::after { right: 5%; bottom: 24%; background: #e7ba68; box-shadow: 0 0 15px #e7ba68; }
-.orbit-one {
-  width: min(39vw, 500px);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  animation: future-orbit-one 17s linear infinite;
+.lab-glow-one { top: 9vh; left: -9vw; }
+.lab-glow-two { right: -7vw; top: 92vh; animation-delay: -8s; animation-direction: alternate-reverse; }
+.lab-trace {
+  position: sticky;
+  top: 12vh;
+  display: block;
+  width: 1px;
+  height: 76vh;
+  margin-left: 7vw;
+  background: linear-gradient(transparent, rgba(189, 111, 72, .36), transparent);
+  box-shadow: 0 0 15px rgba(205, 123, 80, .22);
+  animation: lab-trace-drift 8s ease-in-out infinite alternate;
 }
-.orbit-two {
-  width: min(31vw, 395px);
-  aspect-ratio: 1;
-  opacity: .7;
-  transform: translate(-50%, -50%) rotate(35deg);
-  animation: future-orbit-two 13s linear infinite reverse;
-}
-.future-tech-particle {
-  --particle-size: 8px;
-  position: absolute;
-  z-index: 4;
-  width: var(--particle-size);
-  height: var(--particle-size);
-  border-radius: 50%;
-  background: rgba(145, 255, 220, .9);
-  box-shadow: 0 0 18px rgba(109, 247, 205, .9);
-  animation: future-particle 6s ease-in-out infinite alternate;
-}
-.particle-one { left: 16%; top: 64%; animation-delay: -1s; }
-.particle-two { --particle-size: 5px; left: 29%; top: 28%; animation-delay: -3.4s; }
-.particle-three { --particle-size: 6px; right: 22%; top: 35%; background: #e7ba68; animation-delay: -2.1s; }
-.particle-four { --particle-size: 4px; right: 12%; bottom: 18%; animation-delay: -4.8s; }
-@keyframes future-stage-glow {
-  from { box-shadow: 0 35px 85px rgba(5, 36, 29, .24), inset 0 0 55px rgba(65, 229, 183, .06); }
-  to { box-shadow: 0 42px 100px rgba(5, 36, 29, .34), inset 0 0 85px rgba(65, 229, 183, .12); }
-}
-@keyframes future-image-drift {
-  from { transform: translate3d(-1.5%, 1%, 0) scale(1.02); }
-  to { transform: translate3d(1.5%, -1%, 0) scale(1.08); }
-}
-@keyframes future-grid-drift {
-  from { background-position: 0 0, 0 0; }
-  to { background-position: 0 52px, 52px 0; }
-}
-@keyframes future-scan {
-  0%, 100% { transform: translateY(0); opacity: 0; }
-  12%, 88% { opacity: .7; }
-  50% { transform: translateY(clamp(210px, 30vw, 470px)); opacity: .9; }
-}
-@keyframes future-orbit-one {
-  from { transform: translate(-50%, -50%) rotate(0); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-@keyframes future-orbit-two {
-  from { transform: translate(-50%, -50%) rotate(35deg); }
-  to { transform: translate(-50%, -50%) rotate(395deg); }
-}
-@keyframes future-particle {
-  from { transform: translate3d(-7px, 12px, 0) scale(.65); opacity: .25; }
-  to { transform: translate3d(10px, -16px, 0) scale(1.25); opacity: 1; }
-}
-.future-tech-stage ~ .future-block {
+.future-lab-content {
   position: relative;
-  padding: clamp(22px, 4vw, 46px);
-  border: 1px solid rgba(78, 187, 157, .32);
-  border-radius: 24px;
-  background:
-    linear-gradient(135deg, rgba(16, 54, 46, .97), rgba(7, 31, 27, .98));
-  box-shadow: 0 24px 55px rgba(8, 42, 34, .18);
+  z-index: 2;
+  width: min(1120px, 100%);
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
 }
-.future-tech-stage ~ .future-block::after {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(132, 230, 201, .1);
-  border-radius: 16px;
-  pointer-events: none;
+#food-futures .future-lab-content > .section-subtitle {
+  width: min(1050px, 94vw);
+  margin: 0 auto !important;
+  padding: .25em;
+  color: #4a2e23;
+  font-family: 'FC Ekaluck', 'Sarabun', sans-serif;
+  font-size: clamp(3.6rem, 6.6vw, 7rem);
+  font-weight: 900;
+  line-height: 1.08;
+  text-align: center;
+  text-shadow:
+    0 2px 18px rgba(255, 250, 242, 1),
+    0 0 42px rgba(255, 250, 242, .96);
 }
-.future-tech-stage ~ .future-block .future-text h4 { color: #f2c56f; }
-.future-tech-stage ~ .future-block .future-text p { color: #e5f2eb; }
-.future-tech-stage ~ .future-block .future-img {
-  border: 1px solid rgba(143, 235, 208, .28);
-  box-shadow: 0 18px 40px rgba(0, 12, 10, .36);
+.future-lab-cards {
+  width: min(1120px, 100%);
+  margin: clamp(70px, 9vw, 120px) auto 0;
+}
+.future-lab-cards > .future-block {
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid rgba(162, 112, 78, .2);
+  border-radius: 28px;
+  background: #fffaf3;
+  box-shadow: 0 24px 65px rgba(97, 62, 42, .1);
+}
+.future-lab-cards > .future-block + .future-block {
+  margin-top: clamp(34px, 5vw, 58px);
+}
+.future-lab-cards > .future-block .future-img {
+  border: 1px solid rgba(181, 128, 92, .2);
+  box-shadow: 0 18px 42px rgba(91, 59, 40, .13);
+}
+.future-lab-cards > .future-block .future-text h4,
+.future-protein-panel .section-title {
+  color: #713e2c;
+}
+.future-lab-cards > .future-block .future-text p,
+.future-protein-panel .video-desc {
+  color: #4b3a32;
+}
+.future-protein-panel {
+  position: relative;
+  margin-top: clamp(80px, 10vw, 130px);
+  text-align: center;
+}
+.future-protein-panel .section-title {
+  margin-bottom: clamp(28px, 4vw, 42px);
+  text-shadow: 0 2px 20px rgba(255, 250, 242, .95);
+}
+.future-protein-panel .video-wrapper {
+  border: 7px solid rgba(255, 252, 247, .74);
+  box-shadow: 0 22px 55px rgba(92, 56, 37, .15);
+}
+.future-protein-panel .video-desc {
+  width: min(68ch, calc(100% - 36px));
+  margin: 26px auto 0;
+  padding: 20px 24px;
+  background: rgba(255, 250, 243, .68);
+  backdrop-filter: blur(8px);
+}
+@keyframes lab-background-drift {
+  from { transform: translate3d(-1.15%, calc(var(--lab-parallax) - 5px), 0) scale(1.012); }
+  to { transform: translate3d(1.15%, calc(var(--lab-parallax) + 5px), 0) scale(1.025); }
+}
+@keyframes lab-orbit {
+  from { transform: translate3d(-8px, 10px, 0) rotate(-9deg) scale(.94); opacity: .42; }
+  to { transform: translate3d(18px, -16px, 0) rotate(12deg) scale(1.07); opacity: .78; }
+}
+@keyframes lab-trace-drift {
+  from { transform: translateX(-12px); opacity: .25; }
+  to { transform: translateX(14px); opacity: .66; }
 }
 @media (max-width: 700px) {
-  #food-futures .future-tech-stage {
-    aspect-ratio: 4 / 5;
-    margin-bottom: 42px;
+  #food-futures .image-box { margin-bottom: 58px; }
+  #food-futures .content-container > .highlight-text::before { margin-bottom: 20px; }
+  #food-futures .future-lab-section {
+    height: clamp(560px, 78vh, 720px);
+    padding: 0 18px;
   }
-  .future-tech-stage > img { inset: -5% -55%; width: 210%; height: 110%; }
-  .orbit-one { width: 82vw; }
-  .orbit-two { width: 64vw; }
-  @keyframes future-scan {
-    0%, 100% { transform: translateY(0); opacity: 0; }
-    12%, 88% { opacity: .7; }
-    50% { transform: translateY(92vw); opacity: .9; }
+  .future-lab-background {
+    width: 100%;
   }
-  .future-tech-stage ~ .future-block { padding: 20px; }
+  .future-lab-background img { object-fit: cover; object-position: center; }
+  #food-futures .future-lab-content > .section-subtitle {
+    font-size: clamp(3.15rem, 14vw, 5rem);
+  }
+  .future-lab-cards { margin-top: 58px; }
+  .future-lab-cards > .future-block { padding: 20px; border-radius: 22px; }
+  .future-protein-panel { margin-top: 72px; }
+  .future-protein-panel .video-desc { width: 100%; }
 }
 #global-demand .features-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -633,6 +630,97 @@
 .back-arrow::after { content: ''; position: absolute; left: 13px; top: 18px; width: 8px; height: 8px; border-left: 1px solid; border-bottom: 1px solid; transform: rotate(45deg); }
 .story-section .back-btn:hover { background: #394f3e; transform: translateY(-3px); box-shadow: 0 12px 24px #26362b20; }
 .story-section .back-btn:hover .back-arrow { transform: translateX(-3px); }
+/* Illuminated food stories: a light editorial surface and layered reveals. */
+.dish-section.reveal,
+.dish-section.reverse.reveal {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  opacity: 1;
+  transform: none;
+  background: linear-gradient(125deg, #fff8e9, #f3dfbe);
+  border: 1px solid #edc889;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px #11090355, inset 0 1px 0 #ffffff;
+  padding: clamp(26px, 3vw, 48px);
+}
+.dish-section.reverse.reveal { background: linear-gradient(235deg, #fff8e9, #f3dfbe); }
+.dish-section .dish-title {
+  color: #743917;
+  font-size: clamp(1.9rem, 2.6vw, 2.8rem);
+  font-variation-settings: "Weig" 750;
+  line-height: 1.3;
+}
+.dish-section .dish-subtitle { color: #935624; }
+.dish-section .dish-text { color: #493729; line-height: 1.85; }
+.dish-section .dish-image-wrap {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  padding: 20px;
+}
+.dish-section .dish-image-wrap::before {
+  content: '';
+  position: absolute;
+  width: 88%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f4cf7ca6, #edb95e38 58%, transparent 70%);
+  z-index: -1;
+}
+.dish-section .dish-image-wrap::after {
+  content: '';
+  position: absolute;
+  width: 82%;
+  aspect-ratio: 1;
+  border: 1px solid #b77a3855;
+  border-top: 3px solid #b77a38aa;
+  border-bottom: 3px solid #b77a38aa;
+  border-radius: 50%;
+  z-index: -1;
+}
+.dish-section .dish-image,
+.dish-section:hover .dish-image {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  filter: drop-shadow(0 20px 14px #79451940);
+}
+.dish-section.reveal:not(.visible) > * { opacity: 0; }
+.dish-section.visible .dish-image-wrap { animation: dish-unveil 1.3s cubic-bezier(.16,1,.3,1) both; }
+.dish-section.visible .dish-image { animation: dish-hover 6s ease-in-out 1.3s infinite; }
+.dish-section.visible .dish-image-wrap::after { animation: dish-orbit 24s linear infinite; }
+.dish-section.visible .dish-title,
+.dish-section.visible .dish-subtitle,
+.dish-section.visible .dish-text { animation: dish-copy-in 1s cubic-bezier(.16,1,.3,1) both; }
+.dish-section.visible .dish-title { animation-delay: .2s; }
+.dish-section.visible .dish-subtitle { animation-delay: .4s; }
+.dish-section.visible .dish-text { animation-delay: .6s; }
+@keyframes dish-unveil {
+  from { opacity: 0; clip-path: circle(0% at 50% 50%); transform: rotate(-9deg) scale(.85); }
+  to { opacity: 1; clip-path: circle(85% at 50% 50%); transform: rotate(0) scale(1); }
+}
+@keyframes dish-copy-in {
+  from { opacity: 0; transform: translateY(24px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes dish-hover { 0%,100% { translate: 0 0; rotate: -1deg; } 50% { translate: 0 -10px; rotate: 1deg; } }
+@keyframes dish-orbit { to { transform: rotate(360deg); } }
+.story-motion-paused .dish-section *,
+.story-motion-paused .dish-section *::after { animation: none !important; opacity: 1 !important; }
+@media (prefers-reduced-motion: reduce) {
+  .dish-section.reveal > *, .dish-section *,.dish-section *::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+/* Source credits and links share the requested white text in every theme. */
+body :is(.detail-source, .export-source),
+body .story-section[data-story-theme] :is(.detail-source, .export-source),
+body :is(.detail-source, .export-source) a {
+  color: #fff;
+}
 .story-motion-paused .taste-word { translate: none; }
 @media (max-width: 700px) {
   #foodTypeSelect .foodtype-card { min-height: 280px; gap: 24px; padding: 26px; }

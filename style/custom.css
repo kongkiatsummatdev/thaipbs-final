@@ -416,7 +416,7 @@ footer {
 
 .flag-icon {
   position: absolute;
-  transform: translate(-50%, -100%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   z-index: 4;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
 }
@@ -428,34 +428,36 @@ footer {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Anchors measured on world-map.png's 1920 × 1254 image, not a
+   longitude/latitude grid. Keep these in sync with the SVG route endpoints. */
 .loc-th {
-  left: 77.2%;
-  top: 47.0%;
+  left: calc(1484 / 1920 * 100%);
+  top: calc(590 / 1254 * 100%);
 }
 
 .loc-jp {
-  left: 86.8%;
-  top: 33.5%;
+  left: calc(1658 / 1920 * 100%);
+  top: calc(411 / 1254 * 100%);
 }
 
 .loc-cn {
-  left: 79.7%;
-  top: 31.0%;
+  left: calc(1515 / 1920 * 100%);
+  top: calc(459 / 1254 * 100%);
 }
 
 .loc-au {
-  left: 90.7%;
-  top: 71.0%;
+  left: calc(1650 / 1920 * 100%);
+  top: calc(880 / 1254 * 100%);
 }
 
 .loc-fr {
-  left: 48.2%;
-  top: 30.0%;
+  left: calc(932 / 1920 * 100%);
+  top: calc(395 / 1254 * 100%);
 }
 
 .loc-us {
-  left: 26.9%;
-  top: 33.0%;
+  left: calc(410 / 1920 * 100%);
+  top: calc(415 / 1254 * 100%);
 }
 
 .map-texture-overlay,
@@ -491,6 +493,100 @@ footer {
   padding: 0 5%;
   position: relative;
   justify-content: flex-end;
+}
+
+/* Leave the destination visible beside its country story on desktop. */
+@media (min-width: 1001px) {
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) {
+    padding-inline: 2vw;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .content-card {
+    width: min(48vw, 860px);
+    border-radius: 20px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .card-header {
+    padding: 20px 24px;
+    gap: 20px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .header-text h2 {
+    font-size: clamp(30px, 2.5vw, 42px);
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .flag-badge-map {
+    width: 68px;
+    height: 44px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .card-body {
+    padding: 22px 24px;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 22px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .quote {
+    font-size: 24px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    padding-left: 12px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .desc {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 0;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .food-gallery {
+    gap: 10px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .food-card {
+    padding: 8px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .food-card span {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-top: 6px;
+  }
+
+}
+
+/* Keep the complete country photograph visible at every screen size. */
+:is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .card-footer {
+  height: auto;
+  min-height: 0;
+  flex-shrink: 0;
+}
+
+:is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .landmark-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+  transform: none;
+  transition: none;
+}
+
+@media (min-width: 1001px) and (max-width: 1350px) {
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .card-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  :is(#sec-jp, #sec-cn, #sec-au, #sec-fr, #sec-us) .food-card img {
+    height: 100px;
+    aspect-ratio: auto;
+  }
 }
 
 #sec-intro,
@@ -1656,7 +1752,7 @@ footer {
 }
 
 .detail-source a {
-  color: #c0392b;
+  color: #fff;
   text-decoration: underline;
 }
 
@@ -2167,15 +2263,21 @@ header.hero-header::after {
 
 .header-content {
   position: relative;
+  top: clamp(-180px, -18vh, -90px);
   z-index: 1;
-  width: min(1000px, calc(100% - 40px));
+  width: min(1480px, calc(100% - 48px));
 }
 
 .main-title {
   margin-bottom: 0.12em;
-  font-size: clamp(3.8rem, 7.4vw, 7.2rem);
-  line-height: 0.92;
-  letter-spacing: -0.035em;
+  font-size: clamp(4rem, 8.8vw, 9rem);
+  font-weight: 900;
+  font-variation-settings: "Weig" 850;
+  color: #f4ce8c;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  -webkit-text-stroke: 0.6px currentColor;
+  text-shadow: 0 4px 10px rgba(32, 14, 3, 0.75), 0 10px 32px rgba(32, 14, 3, 0.45);
   text-wrap: balance;
 }
 
@@ -2273,10 +2375,12 @@ header.hero-header::after {
 .map-inner {
   width: min(100vw, 1680px);
   max-width: none;
+  aspect-ratio: 1920 / 1254;
 }
 
 .world-map-bg {
-  object-fit: contain;
+  display: block;
+  object-fit: fill;
   filter: sepia(1) saturate(2.6) brightness(0.31) contrast(1.24);
   opacity: 0.88;
 }
@@ -2291,9 +2395,10 @@ header.hero-header::after {
 }
 
 .route-path {
-  stroke: #fff1b8;
-  stroke-width: 2.5px;
-  filter: drop-shadow(0 0 5px rgba(74, 37, 11, 0.56));
+  stroke: #ffc400;
+  stroke-width: 5px;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 1px 2px rgba(64, 32, 0, 0.9));
 }
 
 .marker {
@@ -3117,10 +3222,26 @@ header.hero-header::after {
   transform: none;
 }
 
+.export-growth-section .content-container {
+  max-width: 1500px;
+}
+
+.export-chart-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(460px, 36vw, 540px);
+  margin: 16px auto 0;
+}
+
 #exportChart {
   width: 100% !important;
-  max-height: 480px;
-  padding: 22px 10px;
+  height: 100% !important;
+  max-height: none;
+  padding: 8px 0;
+}
+
+@media (max-width: 700px) {
+  .export-chart-frame { height: 470px; }
 }
 
 /* Global-demand cards */
@@ -3432,6 +3553,10 @@ header.hero-header::after {
 
   header.hero-header {
     min-height: 600px;
+  }
+
+  .header-content {
+    top: -10vh;
   }
 
   .main-title {
