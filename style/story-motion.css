@@ -512,7 +512,7 @@
 #foodTypeSelect .foodtype-card {
   --taste-ink: #a63224;
   --taste-paper: #fbede5;
-  --taste-image: url('../assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.png');
+  --taste-image: url('../assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.webp');
   align-items: stretch;
   justify-content: space-between;
   gap: 24px;
@@ -529,7 +529,7 @@
 #foodTypeSelect .foodtype-card:nth-child(2) {
   --taste-ink: #805217;
   --taste-paper: #f6efdf;
-  --taste-image: url('../assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png');
+  --taste-image: url('../assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.webp');
 }
 #foodTypeSelect .foodtype-card:nth-child(3) {
   --taste-ink: #2d583e;
@@ -539,7 +539,7 @@
 #foodTypeSelect .foodtype-card:nth-child(4) {
   --taste-ink: #54416e;
   --taste-paper: #eee9f3;
-  --taste-image: url('../assets/images/รูปผัดไทย สไตล์ อเมริกา.png');
+  --taste-image: url('../assets/images/รูปผัดไทย สไตล์ อเมริกา.webp');
 }
 #foodTypeSelect .foodtype-card::before {
   content: '';

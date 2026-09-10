@@ -13,6 +13,7 @@
     <meta name="theme-color" content="#181009">
 
     <link rel="canonical" href="https://thai-food-to-world.vercel.app/">
+    <link rel="preload" as="image" href="assets/images/หน้าแรก2.jpg" type="image/jpeg" fetchpriority="high">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/logos/thaipbs-locals.png">
@@ -44,8 +45,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style/custom.css?v=20260909-futuretech">
-    <link rel="stylesheet" href="style/story-motion.css?v=20260909-futuretech">
+    <link rel="stylesheet" href="style/custom.css?v=20260910-hero-fire">
+    <link rel="stylesheet" href="style/story-motion.css?v=20260910-hero-fire">
 </head>
 
 <body>
@@ -91,8 +92,29 @@
 
   <!-- ========== PART 1 : TIMELINE HERO ========== -->
   <header class="hero-header">
+    <div class="hero-ambient" aria-hidden="true">
+      <div class="hero-heat"></div>
+      <div class="hero-firelight"></div>
+      <span class="hero-steam" style="--x: 59%; --y: 49%; --drift: 42px; --duration: 13s; --delay: -2s;"></span>
+      <span class="hero-steam" style="--x: 67%; --y: 53%; --drift: -34px; --duration: 16s; --delay: -10s;"></span>
+      <span class="hero-steam" style="--x: 75%; --y: 49%; --drift: 30px; --duration: 18s; --delay: -6s;"></span>
+      <span class="hero-steam" style="--x: 18%; --y: 34%; --drift: 38px; --duration: 15s; --delay: -8s;"></span>
+      <span class="hero-steam" style="--x: 25%; --y: 38%; --drift: -28px; --duration: 19s; --delay: -13s;"></span>
+      <span class="hero-ember" style="--x: 8%; --y: 77%; --size: 5px; --duration: 13s; --delay: -3s;"></span>
+      <span class="hero-ember" style="--x: 17%; --y: 68%; --size: 7px; --duration: 17s; --delay: -11s;"></span>
+      <span class="hero-ember" style="--x: 27%; --y: 82%; --size: 4px; --duration: 15s; --delay: -7s;"></span>
+      <span class="hero-ember" style="--x: 38%; --y: 71%; --size: 6px; --duration: 19s; --delay: -14s;"></span>
+      <span class="hero-ember" style="--x: 50%; --y: 85%; --size: 5px; --duration: 14s; --delay: -9s;"></span>
+      <span class="hero-ember" style="--x: 60%; --y: 74%; --size: 8px; --duration: 18s; --delay: -5s;"></span>
+      <span class="hero-ember" style="--x: 70%; --y: 80%; --size: 5px; --duration: 16s; --delay: -12s;"></span>
+      <span class="hero-ember" style="--x: 79%; --y: 67%; --size: 7px; --duration: 20s; --delay: -16s;"></span>
+      <span class="hero-ember" style="--x: 89%; --y: 78%; --size: 4px; --duration: 15s; --delay: -6s;"></span>
+      <span class="hero-ember" style="--x: 33%; --y: 57%; --size: 4px; --duration: 18s; --delay: -2s;"></span>
+      <span class="hero-ember" style="--x: 66%; --y: 59%; --size: 6px; --duration: 17s; --delay: -15s;"></span>
+      <span class="hero-ember" style="--x: 84%; --y: 54%; --size: 5px; --duration: 21s; --delay: -9s;"></span>
+    </div>
     <div class="header-content">
-      <h1 class="main-title">อาหารไทย...จากครัวบ้านสู่</h1>
+      <h1 class="main-title">อาหารไทย...<br class="hero-mobile-break">จากครัวบ้านสู่</h1>
       <h1 class="main-title">ครัวโลก</h1>
 
     </div>
@@ -106,7 +128,7 @@
     <!-- CARD 1 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <img src="assets/images/TimeFish.png" alt="Pla Pao" class="card-image">
+        <img decoding="async" loading="lazy" src="assets/images/TimeFish.webp" alt="Pla Pao" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">ปลาเผาโบราณ</h2>
@@ -127,7 +149,7 @@
     <!-- CARD 2 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <img src="assets/images/t12.png" alt="Kaeng Liang" class="card-image">
+        <img decoding="async" loading="lazy" src="assets/images/t12.webp" alt="Kaeng Liang" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">แกงมัสมั่น</h2>
@@ -148,7 +170,7 @@
     <!-- CARD 3 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <img src="assets/images/t13.png" alt="Massaman" class="card-image">
+        <img decoding="async" loading="lazy" src="assets/images/t13.webp" alt="Massaman" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">แกงเลียง</h2>
@@ -168,7 +190,7 @@
     <!-- CARD 4 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <img src="assets/images/t09.png" alt="Khao Chae" class="card-image">
+        <img decoding="async" loading="lazy" src="assets/images/t09.webp" alt="Khao Chae" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">ผัดผักบุ้งไฟแดง</h2>
@@ -188,7 +210,7 @@
     <!-- CARD 5 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <img src="assets/images/t11.png" alt="Thai Roast Beef" class="card-image">
+        <img decoding="async" loading="lazy" src="assets/images/t11.webp" alt="Thai Roast Beef" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">แกงเขียวหวาน</h2>
@@ -208,7 +230,7 @@
     <!-- CARD 6 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <img src="assets/images/t07.png" alt="padthai" class="card-image">
+        <img decoding="async" loading="lazy" src="assets/images/t07.webp" alt="padthai" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">ผัดไทย</h2>
@@ -228,7 +250,7 @@
     <!-- CARD 7 -->
     <div class="card">
       <div class="card-image-wrapper">
-        <img src="assets/images/t08.png" alt="Tom Yum Goong" class="card-image">
+        <img decoding="async" loading="lazy" src="assets/images/t08.webp" alt="Tom Yum Goong" class="card-image">
       </div>
       <div class="card-content">
         <h2 class="card-title">ซุปต้มยำกุ้ง</h2>
@@ -254,8 +276,8 @@
 
   <div class="map-fixed-container">
     <div class="map-inner" id="map-click-target">
-      <img
-        src="assets/images/world-map.png"
+      <img decoding="async" loading="lazy"
+        src="assets/images/world-map.webp"
         alt="World Map" class="world-map-bg">
       <svg class="map-svg" viewBox="0 0 1920 1254" preserveAspectRatio="none">
         <path id="path-jp" class="route-path" d="M1484,590 Q1590,555 1658,411" />
@@ -265,11 +287,11 @@
         <path id="path-us" class="route-path" d="M1484,590 Q950,120 410,415" />
       </svg>
       <div class="marker loc-th"></div>
-      <div class="flag-icon loc-jp" id="flag-jp"><img src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น"></div>
-      <div class="flag-icon loc-cn" id="flag-cn"><img src="assets/images/flags/cn.svg" alt="ธงประเทศจีน"></div>
-      <div class="flag-icon loc-au" id="flag-au"><img src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย"></div>
-      <div class="flag-icon loc-fr" id="flag-fr"><img src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส"></div>
-      <div class="flag-icon loc-us" id="flag-us"><img src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา"></div>
+      <div class="flag-icon loc-jp" id="flag-jp"><img decoding="async" loading="lazy" src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น"></div>
+      <div class="flag-icon loc-cn" id="flag-cn"><img decoding="async" loading="lazy" src="assets/images/flags/cn.svg" alt="ธงประเทศจีน"></div>
+      <div class="flag-icon loc-au" id="flag-au"><img decoding="async" loading="lazy" src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย"></div>
+      <div class="flag-icon loc-fr" id="flag-fr"><img decoding="async" loading="lazy" src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส"></div>
+      <div class="flag-icon loc-us" id="flag-us"><img decoding="async" loading="lazy" src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา"></div>
     </div>
   </div>
 
@@ -294,7 +316,7 @@
             <h2 class="thai-header">รสไทยในแดนอูมามิ</h2>
           </div>
           <div class="flag-badge-map">
-              <img src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น">
+              <img decoding="async" loading="lazy" src="assets/images/flags/jp.svg" alt="ธงประเทศญี่ปุ่น">
           </div>
         </div>
         <div class="card-body">
@@ -306,17 +328,17 @@
           </div>
           <div class="food-gallery">
             <div class="food-card">
-              <img src="assets/images/รูปต้มยำกุ้ง สไตล์ญี่ปุ่น .png" alt="Tom Yum">
+              <img decoding="async" loading="lazy" src="assets/images/รูปต้มยำกุ้ง สไตล์ญี่ปุ่น .webp" alt="Tom Yum">
               <span>ต้มยำกุ้ง</span>
             </div>
             <div class="food-card">
-              <img src="assets/images/รูปข้าวผัด สไตล์ญี่ปุ่น .png" alt="Pad Thai">
+              <img decoding="async" loading="lazy" src="assets/images/รูปข้าวผัด สไตล์ญี่ปุ่น .webp" alt="Pad Thai">
               <span>ผัดไทย</span>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <img src="assets/images/Japan.jpg" alt="Japan" class="landmark-bg">
+          <img decoding="async" loading="lazy" src="assets/images/Japan.webp" alt="Japan" class="landmark-bg">
         </div>
       </div>
     </section>
@@ -329,7 +351,7 @@
             <h2 class="thai-header">รสชาติไทยในตลาดที่โตเร็วที่สุด</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="assets/images/flags/cn.svg" alt="ธงประเทศจีน">
+            <img decoding="async" loading="lazy" src="assets/images/flags/cn.svg" alt="ธงประเทศจีน">
           </div>
         </div>
         <div class="card-body">
@@ -342,17 +364,17 @@
           </div>
           <div class="food-gallery">
             <div class="food-card">
-              <img src="assets/images/รูปต้มยำกุ้ง สไตล์จีน .png" alt="Tom Yum China">
+              <img decoding="async" loading="lazy" src="assets/images/รูปต้มยำกุ้ง สไตล์จีน .webp" alt="Tom Yum China">
               <span>ต้มยำหม้อไฟ</span>
             </div>
             <div class="food-card">
-              <img src="assets/images/รูปข้าวเหนี่ยวมะม่วง สไตล์จีน .png" alt="Mango sticky rice">
+              <img decoding="async" loading="lazy" src="assets/images/รูปข้าวเหนี่ยวมะม่วง สไตล์จีน .webp" alt="Mango sticky rice">
               <span>ข้าวเหนียวมะม่วง</span>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <img src="assets/images/chaina.jpg" alt="China" class="landmark-bg">
+          <img decoding="async" loading="lazy" src="assets/images/chaina.webp" alt="China" class="landmark-bg">
         </div>
       </div>
     </section>
@@ -365,7 +387,7 @@
             <h2 class="thai-header">รสไทยในบ้านของชาวออสซี่</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย">
+            <img decoding="async" loading="lazy" src="assets/images/flags/au.svg" alt="ธงประเทศออสเตรเลีย">
           </div>
         </div>
         <div class="card-body">
@@ -379,17 +401,17 @@
           </div>
           <div class="food-gallery">
             <div class="food-card">
-              <img src="assets/images/รูปต้มยำกุ้ง ออสเตรเลีย.png" alt="Tom Yum Aus">
+              <img decoding="async" loading="lazy" src="assets/images/รูปต้มยำกุ้ง ออสเตรเลีย.webp" alt="Tom Yum Aus">
               <span>ต้มยำกุ้ง</span>
             </div>
             <div class="food-card">
-              <img src="assets/images/รูปแกงเขียวหวาน ออสเตรเลีย.png" alt="Green curry">
+              <img decoding="async" loading="lazy" src="assets/images/รูปแกงเขียวหวาน ออสเตรเลีย.webp" alt="Green curry">
               <span>แกงเขียวหวาน</span>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <img src="assets/images/Aus.jpg" alt="Uluru, Australia" class="landmark-bg">
+          <img decoding="async" loading="lazy" src="assets/images/Aus.webp" alt="Uluru, Australia" class="landmark-bg">
         </div>
       </div>
     </section>
@@ -402,7 +424,7 @@
             <h2 class="thai-header">รสอาหารไทยในเมืองศิลปะ</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส">
+            <img decoding="async" loading="lazy" src="assets/images/flags/fr.svg" alt="ธงประเทศฝรั่งเศส">
           </div>
         </div>
         <div class="card-body">
@@ -416,17 +438,17 @@
           </div>
           <div class="food-gallery">
             <div class="food-card">
-              <img src="assets/images/รูปมัสมั่นไก่ สไตล์ ฝรั่งเศส.png" alt="Massaman">
+              <img decoding="async" loading="lazy" src="assets/images/รูปมัสมั่นไก่ สไตล์ ฝรั่งเศส.webp" alt="Massaman">
               <span>มัสมั่นไก่</span>
             </div>
             <div class="food-card">
-              <img src="assets/images/รูปต้มข่าไก่ สไตล์ ฝรั่งเศส .png" alt="Tom Kha">
+              <img decoding="async" loading="lazy" src="assets/images/รูปต้มข่าไก่ สไตล์ ฝรั่งเศส .webp" alt="Tom Kha">
               <span>ต้มข่าไก่</span>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <img src="assets/images/Paris.jpg" alt="Paris" class="landmark-bg">
+          <img decoding="async" loading="lazy" src="assets/images/Paris.webp" alt="Paris" class="landmark-bg">
         </div>
     </section>
 
@@ -438,7 +460,7 @@
             <h2 class="thai-header">รสครัวไทยสู่ครัวโลก</h2>
           </div>
           <div class="flag-badge-map">
-            <img src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา">
+            <img decoding="async" loading="lazy" src="assets/images/flags/us.svg" alt="ธงประเทศสหรัฐอเมริกา">
           </div>
         </div>
         <div class="card-body">
@@ -452,17 +474,17 @@
           </div>
           <div class="food-gallery">
             <div class="food-card">
-              <img src="assets/images/รูปผัดไทย สไตล์ อเมริกา.png" alt="Pad Thai USA">
+              <img decoding="async" loading="lazy" src="assets/images/รูปผัดไทย สไตล์ อเมริกา.webp" alt="Pad Thai USA">
               <span>ผัดไทย (Pad Thai)</span>
             </div>
             <div class="food-card">
-              <img src="assets/images/รูปผัดซีอิ๊ว สไตล์ อเมริกา .png" alt="Pad see ew">
+              <img decoding="async" loading="lazy" src="assets/images/รูปผัดซีอิ๊ว สไตล์ อเมริกา .webp" alt="Pad see ew">
               <span>ผัดซีอิ๊ว</span>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <img src="assets/images/USA1.jpg" alt="USA" class="landmark-bg">
+          <img decoding="async" loading="lazy" src="assets/images/USA1.webp" alt="USA" class="landmark-bg">
         </div>
       </div>
     </section>
@@ -470,8 +492,8 @@
     <section class="section" id="sec-outro">
       <div class="map-outro-card">
         <div class="outro-visuals" aria-hidden="true">
-          <img src="assets/images/ผัดไทย.1.png" alt="">
-          <img src="assets/images/รูปต้มยำกุ้ง .png" alt="">
+          <img decoding="async" loading="lazy" src="assets/images/ผัดไทย.1.webp" alt="">
+          <img decoding="async" loading="lazy" src="assets/images/รูปต้มยำกุ้ง .webp" alt="">
         </div>
         <div class="map-outro-copy">
           <p class="map-intro-kicker">รสชาติที่เดินทางข้ามพรมแดน</p>
@@ -501,8 +523,8 @@
 
       <!-- TOP IMAGES -->
       <div class="top-images reveal">
-        <img src="assets/images/b_00.png" alt="ครัวไทย" />
-        <img src="assets/images/จานอาหารไทยคู่ครัว.png" alt="จานอาหารไทย" />
+        <img decoding="async" loading="lazy" src="assets/images/b_00.webp" alt="ครัวไทย" />
+        <img decoding="async" loading="lazy" src="assets/images/จานอาหารไทยคู่ครัว.webp" alt="จานอาหารไทย" />
       </div>
 
       <!-- INTRO TEXT -->
@@ -513,7 +535,7 @@
       <!-- DISH 1 -->
       <section class="dish-section reveal">
         <div class="dish-image-wrap">
-          <img class="dish-image" src="assets/images/รูปข้าวผัด สไตล์ญี่ปุ่น .png" alt="อาหารไทยรวม" />
+          <img decoding="async" loading="lazy" class="dish-image" src="assets/images/รูปข้าวผัด สไตล์ญี่ปุ่น .webp" alt="อาหารไทยรวม" />
         </div>
         <div>
           <div class="dish-title">อาหารไทย: รสชาติที่คนทั่วโลกเริ่มคุ้นเคย</div>
@@ -537,14 +559,14 @@
           </p>
         </div>
         <div class="dish-image-wrap">
-          <img class="dish-image" src="assets/images/ผัดไทย.1.png" alt="ผัดไทย" />
+          <img decoding="async" loading="lazy" class="dish-image" src="assets/images/ผัดไทย.1.webp" alt="ผัดไทย" />
         </div>
       </section>
 
       <!-- DISH 3 -->
       <section class="dish-section reveal">
         <div class="dish-image-wrap">
-          <img class="dish-image" src="assets/images/รูปต้มยำกุ้ง .png" alt="ต้มยำกุ้ง" />
+          <img decoding="async" loading="lazy" class="dish-image" src="assets/images/รูปต้มยำกุ้ง .webp" alt="ต้มยำกุ้ง" />
         </div>
         <div>
           <div class="dish-title">ต้มยำกุ้ง</div>
@@ -566,7 +588,7 @@
         <p class="detail-source">ที่มา: <a href="https://www.thaiselect.com/th?skipSplash=1" target="_blank" rel="noopener">thaiselect.com</a></p>
 
         <div class="thai-select-map" aria-label="แผนที่แสดงภูมิภาคที่มีร้านอาหารได้รับตรา Thai Select ทั่วโลก">
-          <img src="assets/images/Gemini_Generated_Image_7e95l37e95l37e95.jpg" alt="แผนที่โลกแสดงประเทศไทยและตลาดอาหารไทยตัวอย่าง 5 ประเทศ" class="stats-map">
+          <img decoding="async" loading="lazy" src="assets/images/Gemini_Generated_Image_7e95l37e95l37e95.webp" alt="แผนที่โลกแสดงประเทศไทยและตลาดอาหารไทยตัวอย่าง 5 ประเทศ" class="stats-map">
         </div>
         <p class="detail-source">ที่มา: <a href="https://www.thaiselect.com/welcome" target="_blank" rel="noopener">โครงการ Thai SELECT กระทรวงพาณิชย์</a></p>
 
@@ -587,7 +609,7 @@
         <p class="export-source">ที่มา: สมาคมผู้ส่งออกข้าวไทย (Thai Rice Exporters Association) และ กรมส่งเสริมการค้าระหว่างประเทศ (DITP)</p>
 
         <div class="export-hero">
-          <img src="assets/images/เครื่อง.jpg" alt="วัตถุดิบอาหารไทยเพื่อการส่งออก">
+          <img decoding="async" loading="lazy" src="assets/images/เครื่อง.webp" alt="วัตถุดิบอาหารไทยเพื่อการส่งออก">
         </div>
 
         <h3 class="donut-section-title">อัตราส่วนการส่งออกสินค้าอาหารบริโภคของไทย (พ.ศ. 2568)</h3>
@@ -659,7 +681,7 @@
             <h2 class="section-title reveal">กระแสอาหารโลกใหม่</h2>
 
             <div class="image-box reveal">
-                <img src="assets/images/Gemini_Generated_Image_w317j1w317j1w317.jpg" alt="ภาพกระแสอาหารโลก">
+                <img decoding="async" loading="lazy" src="assets/images/Gemini_Generated_Image_w317j1w317j1w317.webp" alt="ภาพกระแสอาหารโลก">
             </div>
 
             <p class="highlight-text reveal">
@@ -682,7 +704,7 @@
                     <div class="future-block reveal">
                         
                         <div class="future-img">
-                            <img src="assets/images/ส้มตำ.png" alt="ส้มตำจากวัตถุดิบท้องถิ่น">
+                            <img decoding="async" loading="lazy" src="assets/images/ส้มตำ.webp" alt="ส้มตำจากวัตถุดิบท้องถิ่น">
                         </div>
 
                         <div class="future-text">
@@ -701,7 +723,7 @@
                     <div class="future-block reverse reveal">
                         
                         <div class="future-img">
-                            <img src="assets/images/น้ำพริกกะปิ.jpeg" alt="น้ำพริกกะปิและผักพื้นบ้าน">
+                            <img decoding="async" loading="lazy" src="assets/images/น้ำพริกกะปิ.jpeg" alt="น้ำพริกกะปิและผักพื้นบ้าน">
                         </div>
 
                         <div class="future-text">
@@ -720,7 +742,7 @@
                     <div class="future-block reveal">
                         
                         <div class="future-img">
-                            <img src="assets/images/แกงไตปลา.jpg" alt="แกงไตปลาจากวัตถุดิบท้องถิ่น">
+                            <img decoding="async" loading="lazy" src="assets/images/แกงไตปลา.webp" alt="แกงไตปลาจากวัตถุดิบท้องถิ่น">
                         </div>
 
                         <div class="future-text">
@@ -736,7 +758,7 @@
                     <div class="future-block reverse reveal">
                         
                         <div class="future-img ready-meal-frame">
-                            <img class="ready-meal-image" src="assets/images/thai-ready-to-eat.png" alt="ข้าวกะเพราไก่พร้อมทานในบรรจุภัณฑ์แบบไม่มีแบรนด์">
+                            <img decoding="async" loading="lazy" class="ready-meal-image" src="assets/images/thai-ready-to-eat.webp" alt="ข้าวกะเพราไก่พร้อมทานในบรรจุภัณฑ์แบบไม่มีแบรนด์">
                         </div>
 
                         <div class="future-text">
@@ -753,7 +775,7 @@
             <!-- อาหารและโปรตีนแห่งอนาคต: ฉากห้องทดลองเดียวกัน -->
             <div id="future-lab" class="future-lab-section">
                 <div class="future-lab-background" aria-hidden="true">
-                    <img src="assets/images/future-food-lab.png" alt="" loading="lazy">
+                    <img decoding="async" src="assets/images/future-food-lab.webp" alt="" loading="lazy">
                 </div>
                 <div class="future-lab-wash" aria-hidden="true"></div>
                 <div class="future-lab-motion" aria-hidden="true">
@@ -772,7 +794,7 @@
             <div class="future-lab-cards">
                 <div class="future-block reveal">
                     <div class="future-img">
-                        <img src="assets/images/Gemini_Generated_Image_qyg8p4qyg8p4qyg8.jpg" alt="ดักแด้หนอนไหม">
+                        <img decoding="async" loading="lazy" src="assets/images/Gemini_Generated_Image_qyg8p4qyg8p4qyg8.webp" alt="ดักแด้หนอนไหม">
                     </div>
                     <div class="future-text">
                         <h4>ดักแด้โปรตีนสูง</h4>
@@ -783,7 +805,7 @@
 
                 <div class="future-block reverse reveal">
                     <div class="future-img">
-                        <img src="assets/images/Gemini_Generated_Image_2yleo62yleo62yle.jpg" alt="ไข่ผำ โปรตีนจากพืช">
+                        <img decoding="async" loading="lazy" src="assets/images/Gemini_Generated_Image_2yleo62yleo62yle.webp" alt="ไข่ผำ โปรตีนจากพืช">
                     </div>
                     <div class="future-text">
                         <h4>ไข่ผำ (Plant-based protein)</h4>
@@ -867,19 +889,19 @@
         <article class="feature-card" data-animate>
             <h3>อาหารคาร์บอนต่ำ</h3>
             <p>วัตถุดิบท้องถิ่นใกล้แหล่งผลิต ลดการขนส่งและปล่อยก๊าซคาร์บอนต่ำ — เหมาะกับตลาดยุคใหม่ที่ใส่ใจสิ่งแวดล้อม</p>
-            <img src="assets/images/low-carbon-food.png" alt="">
+            <img decoding="async" loading="lazy" src="assets/images/low-carbon-food.webp" alt="">
         </article>
 
         <article class="feature-card" data-animate>
             <h3>รสชาติต้นตำรับ</h3>
             <p>สูตรดั้งเดิม + วิธีทำที่มีเอกลักษณ์เฉพาะตัว</p>
-            <img src="assets/images/authentic-taste.png" alt="">
+            <img decoding="async" loading="lazy" src="assets/images/authentic-taste.webp" alt="">
         </article>
 
         <article class="feature-card" data-animate>
             <h3>บรรจุภัณฑ์ยั่งยืน</h3>
             <p>บรรจุภัณฑ์ที่ย่อยสลายได้ + งานออกแบบใหม่</p>
-            <img src="assets/images/sustainable-packaging.png" alt="">
+            <img decoding="async" loading="lazy" src="assets/images/sustainable-packaging.webp" alt="">
         </article>
 
         </div>
@@ -934,7 +956,7 @@
 
             <h2 id="foodTypeTitle" class="foodtype-title"></h2>
 
-            <img id="foodTypeImg" class="detail-img" src="" alt="" style="display:none;">
+            <img decoding="async" loading="lazy" id="foodTypeImg" class="detail-img" src="" alt="" style="display:none;">
 
             <p id="foodTypeDesc" class="foodtype-subtitle" style="max-width:600px; margin:auto;"></p>
 
@@ -958,43 +980,43 @@
         <div id="favFoodSelect" class="favfood-select">
 
             <button type="button" class="menu-card" onclick="showFoodDetail('tomyum')">
-                <img src="assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.png" alt="ต้มยำกุ้ง">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.webp" alt="ต้มยำกุ้ง">
                 
                 <h3>ต้มยำกุ้ง</h3>
             </button>
 
             <button type="button" class="menu-card" onclick="showFoodDetail('padthai')">
-                <img src="assets/images/favfooddetail/ผัดไทย_จานโปรด.png" alt="ผัดไทย">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/ผัดไทย_จานโปรด.webp" alt="ผัดไทย">
                 <h3>ผัดไทย</h3>
             </button>
 
             <button type="button" class="menu-card" onclick="showFoodDetail('greencurry')">
-                <img src="assets/images/favfooddetail/แกงเขียวหวาน_จานโปรด.png" alt="แกงเขียวหวาน">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/แกงเขียวหวาน_จานโปรด.webp" alt="แกงเขียวหวาน">
                 <h3>แกงเขียวหวาน</h3>
             </button>
 
             <button type="button" class="menu-card" onclick="showFoodDetail('taipla')">
-                <img src="assets/images/favfooddetail/แกงไตปลา_จานโปรด.png" alt="แกงไตปลา">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/แกงไตปลา_จานโปรด.webp" alt="แกงไตปลา">
                 <h3>แกงไตปลา</h3>
             </button>
 
             <button type="button" class="menu-card" onclick="showFoodDetail('stickyrice')">
-                <img src="assets/images/favfooddetail/ข้าวเหนียวมะม่วง_จานโปรด.png" alt="ข้าวเหนียวมะม่วง">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/ข้าวเหนียวมะม่วง_จานโปรด.webp" alt="ข้าวเหนียวมะม่วง">
                 <h3>ข้าวเหนียวมะม่วง</h3>
             </button>
 
             <button type="button" class="menu-card" onclick="showFoodDetail('redcurry')">
-                <img src="assets/images/favfooddetail/แกงมัสมั่นไก่_จานโปรด.png" alt="แกงมัสมั่น">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/แกงมัสมั่นไก่_จานโปรด.webp" alt="แกงมัสมั่น">
                 <h3>แกงมัสมั่น</h3>
             </button>
 
             <button type="button" class="menu-card" onclick="showFoodDetail('tomkakai')">
-                <img src="assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png" alt="ต้มข่าไก่">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.webp" alt="ต้มข่าไก่">
                 <h3>ต้มข่าไก่</h3>
             </button>
 
             <button type="button" class="menu-card" onclick="showFoodDetail('kaosoi')">
-                <img src="assets/images/favfooddetail/ข้าวซอย_จานโปรด.png" alt="ข้าวซอย">
+                <img decoding="async" loading="lazy" src="assets/images/favfooddetail/ข้าวซอย_จานโปรด.webp" alt="ข้าวซอย">
                 <h3>ข้าวซอย</h3>
             </button>
 
@@ -1006,7 +1028,7 @@
 
 
         <h2 id="foodTitle"></h2>
-        <img id="foodImg" class="detail-img" />
+        <img decoding="async" loading="lazy" id="foodImg" class="detail-img" />
 
 
         <!-- กล่องข้อมูลซ้าย-ขวาแบบรูป Canva -->
@@ -1043,10 +1065,10 @@
     <!-- Footer -->
     <footer class="credit-bar">
         <div class="credit-logos">
-            <span class="credit-logo"><img src="assets/images/logos/tcij.jpg" alt="Thai PBS"></span>
-            <span class="credit-logo"><img src="assets/images/logos/thaipbs-locals.png" alt="Thai PBS Locals"></span>
-            <span class="credit-logo"><img src="assets/images/logos/informatics-msu.png" alt="คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม"></span>
-            <span class="credit-logo"><img src="assets/images/logos/msu-university.png" alt="มหาวิทยาลัยมหาสารคาม"></span>
+            <span class="credit-logo"><img decoding="async" loading="lazy" src="assets/images/logos/tcij.jpg" alt="Thai PBS"></span>
+            <span class="credit-logo"><img decoding="async" loading="lazy" src="assets/images/logos/thaipbs-locals.png" alt="Thai PBS Locals"></span>
+            <span class="credit-logo"><img decoding="async" loading="lazy" src="assets/images/logos/informatics-msu.png" alt="คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม"></span>
+            <span class="credit-logo"><img decoding="async" loading="lazy" src="assets/images/logos/msu-university.png" alt="มหาวิทยาลัยมหาสารคาม"></span>
 
         </div>
         <p class="credit-text">
@@ -1075,8 +1097,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     
-    <script src="script/main.js?v=20260909-futuretech"></script>
-    <script src="script/story-motion.js?v=20260909-futuretech"></script>
+    <script src="script/main.js?v=20260910-hero-fire"></script>
+    <script src="script/story-motion.js?v=20260910-hero-fire"></script>
 
 </body>
 </html>

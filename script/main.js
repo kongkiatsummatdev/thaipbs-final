@@ -9,27 +9,24 @@ gsap.registerPlugin(ScrollTrigger);
 /* ======================================================
    HERO HEADER FADE-IN
 ====================================================== */
-const heroTimeline = gsap.timeline({ delay: 0.15 });
-heroTimeline
-  .to(".header-content", {
-    opacity: 1,
-    y: 0,
-    duration: 0.7,
-    ease: "power2.out"
-  })
-  .from(".main-title", {
-    opacity: 0,
-    y: 42,
-    duration: 1.05,
-    stagger: 0.14,
-    ease: "power3.out"
-  }, "<0.05")
-  .from(".subtitle-hero", {
-    opacity: 0,
-    y: 26,
-    duration: 0.85,
-    ease: "power2.out"
-  }, "-=0.48");
+// Headline entrance is CSS-only and plays once. Pause ambient motion offscreen
+// or in a background tab without tying its pace to scrolling.
+const ambientHero = document.querySelector('.hero-header');
+if (ambientHero) {
+  let heroVisible = true;
+  const syncHeroMotion = () => ambientHero.classList.toggle(
+    'hero-motion-paused', !heroVisible || document.hidden
+  );
+  if ('IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      syncHeroMotion();
+    });
+    heroObserver.observe(ambientHero);
+  }
+  document.addEventListener('visibilitychange', syncHeroMotion);
+  syncHeroMotion();
+}
 
 /* ======================================================
    TIMELINE CARDS FADE UP
@@ -635,7 +632,7 @@ ScrollTrigger.create({
 const foodTypeData = {
     spicy: {
         title: "สายจัดจ้าน",
-        img: "assets/images/รูปต้มยำกุ้ง .png",
+        img: "assets/images/รูปต้มยำกุ้ง .webp",
         desc: "เผ็ด เปรี้ยว เค็มเข้มข้น เหมาะสำหรับคนรักความท้าทาย",
         blocks: [
             {
@@ -660,7 +657,7 @@ const foodTypeData = {
 
     soft: {
         title: "สายนุ่มละมุน",
-        img: "assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png",
+        img: "assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.webp",
         desc: "สายหวานนุ่ม ไม่เผ็ด ไม่จัด อารมณ์ละมุนๆ",
         blocks: [
             {
@@ -709,7 +706,7 @@ const foodTypeData = {
 
     modern: {
         title: "สายทันสมัย",
-        img: "assets/images/รูปผัดไทย สไตล์ อเมริกา.png",
+        img: "assets/images/รูปผัดไทย สไตล์ อเมริกา.webp",
         desc: "สนุกกับการผสมรสชาติไทยเข้ากับไอเดียใหม่และวัฒนธรรมร่วมสมัย",
         blocks: [
             {
@@ -799,7 +796,7 @@ function backToFoodType() {
 const favFoodData = {
     padthai: {
         title: "ผัดไทย",
-        img: "assets/images/favfooddetail/ผัดไทย_จานโปรด.png",
+        img: "assets/images/favfooddetail/ผัดไทย_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: "ผัดไทย ยุคสมัย: ผัดไทยเกิดขึ้นในสมัย จอมพล ป. พิบูลสงคราม ดำรงตำแหน่งนายกรัฐมนตรี (ช่วงปลายทศวรรษ 2480 ถึงต้น 2490) ซึ่งเป็นช่วงที่ประเทศไทยประสบกับปัญหาเศรษฐกิจตกต่ำ และภาวะขาดแคลนข้าวจากสงครามโลกครั้งที่ 2",
@@ -816,7 +813,7 @@ const favFoodData = {
 
     greencurry: {
         title: "แกงเขียวหวาน",
-        img: "assets/images/favfooddetail/แกงเขียวหวาน_จานโปรด.png",
+        img: "assets/images/favfooddetail/แกงเขียวหวาน_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: 'แกงเขียวหวาน เป็นแกงกะทิรสชาติกลมกล่อม ที่มีต้นกำเนิดจาก ภาคกลาง ของประเทศไทย เชื่อกันว่าพัฒนามาจากการปรุงอาหารประเภทแกงกะทิใน สมัยอยุธยา โดยดัดแปลงมาจากแกงเผ็ดหรือแกงแดงจุดเด่นของแกงเขียวหวานคือการใช้ พริกขี้หนูสดสีเขียว หรือ พริกชี้ฟ้าเขียว ในการทำน้ำพริกแกง ทำให้ได้สีเขียวนวลตา เมื่อผัดกับกะทิคำว่า "หวาน" ในชื่อไม่ได้หมายถึงรสหวานนำ แต่หมายถึงสีเขียวที่ดู "หวานละมุน" หรือ "นวล"',
@@ -832,7 +829,7 @@ const favFoodData = {
 
     tomkakai: {
         title: "ต้มข่าไก่",
-        img: "assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.png",
+        img: "assets/images/favfooddetail/ต้มข่าไก่_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: 'ต้มข่าไก่ มีต้นกำเนิดประมาณปี พ.ศ. 2433 (ปลายรัชกาลที่ 5) และถูกบันทึกไว้ในตำราอาหารไทยยุคแรก ๆเมนูต้นฉบับ: เมนูต้มข่าดั้งเดิมที่ถูกบันทึกไว้คือ "ต้มข่าเป็ด" ซึ่งใช้เนื้อเป็ดและข่าอ่อนเป็นส่วนผสมหลักในน้ำแกงกะทิ',
@@ -850,7 +847,7 @@ const favFoodData = {
 
     tomyum: {
         title: "ต้มยำกุ้ง",
-        img: "assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.png",
+        img: "assets/images/favfooddetail/ต้มยำกุ้ง_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: "ต้มยำกุ้ง เป็นซุปสมุนไพรไทยที่มีต้นกำเนิดจาก ภาคกลาง เชื่อว่าเกิดจากวิถีชีวิตริมน้ำของคนไทยที่จับกุ้งสดจาก แม่น้ำ แล้วนำมาปรุงกับสมุนไพร พื้นบ้าน เช่น ข่า ตะไคร้ มะกรูด สืบทอดมาตั้งแต่สมัย “กรุงศรีอยุธยา” และกลายเป็นหนึ่งในอาหารประจำชาติของไทย ปัจจุบันเป็นเมนูที่สร้างอัตลักษณ์ความ “เผ็ด-เปรี้ยว-หอมสมุนไพร” ให้โลกจดจำอาหารไทย...",
@@ -867,7 +864,7 @@ const favFoodData = {
 
     taipla: {
         title: "แกงไตปลา",
-        img: "assets/images/favfooddetail/แกงไตปลา_จานโปรด.png",
+        img: "assets/images/favfooddetail/แกงไตปลา_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: 'แกงไตปลา  มาจากส่วนผสมหลักที่ให้รสชาติและกลิ่นเฉพาะตัว คือ "ไตปลา" หรือ "พุงปลา" ซึ่งเป็นส่วนของกระเพาะและลำไส้ของปลา (เช่น ปลาทู ปลาอินทรี หรือปลาช่อน) ที่นำมาหมักกับเกลือจนกลายเป็นน้ำพริก/เครื่องปรุงรสเค็มข้นคล้ายกะปิหรือปลาร้า',
@@ -884,7 +881,7 @@ const favFoodData = {
 
     redcurry: {
         title: "มัสมั่น",
-        img: "assets/images/favfooddetail/แกงมัสมั่นไก่_จานโปรด.png",
+        img: "assets/images/favfooddetail/แกงมัสมั่นไก่_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: 'แกงมัสมั่นไก่ มีต้นกำเนิดจาก แขกเจ้าเซ็น (มุสลิมนิกายชีอะฮ์ในประเทศไทย) สมัยกรุงศรีอยุธยา นำเครื่องเทศนานาชนิดมาผสมผสานกับวัตถุดิบไทย กลายเป็นแกงรสเข้มข้น มีกลิ่นหอมจากเครื่องเทศ เช่น ยี่หร่า, ลูกผักชี, อบเชย และกานพลู, ถูกบันทึกครั้งแรกใน "กาพย์เห่เรือชมเครื่องคาวหวาน" รัชกาลที่ 2 และได้รับยกย่องเป็นอาหารอร่อยที่สุดในโลก โดยชื่อ "มัสมั่น" มาจากคำว่า "มุสลิมาน" (ชาวมุสลิม) ในภาษาเปอร์เซีย',
@@ -901,7 +898,7 @@ const favFoodData = {
 
     kaosoi: {
         title: "ข้าวซอย",
-        img: "assets/images/favfooddetail/ข้าวซอย_จานโปรด.png",
+        img: "assets/images/favfooddetail/ข้าวซอย_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: 'ข้าวซอย มีรากเหง้ามาจากอาหารของ ชาวจีนมุสลิม (จีนฮ่อ/จีนยูนนาน) ที่อพยพมาค้าขายและตั้งถิ่นฐานบริเวณภาคเหนือของไทย พม่า (เมียนมา) และลาว ในช่วงศตวรรษที่ 19    สูตรดั้งเดิม (ข้าวซอยน้ำใส): ข้าวซอยแบบดั้งเดิมของชาวจีนฮ่อ ไม่มีส่วนผสมของกะทิ น้ำซุปจะใสและได้จากการเคี่ยวกระดูกสัตว์ (วัว/ไก่) และมีชื่อเรียกแตกต่างกันไป เช่น ข้าวซอยหนาก หรือ เออร์ไคว่ (Erkuai)',
@@ -918,7 +915,7 @@ const favFoodData = {
 
     stickyrice: {
         title: "ข้าวเหนียวมะม่วง",
-        img: "assets/images/favfooddetail/ข้าวเหนียวมะม่วง_จานโปรด.png",
+        img: "assets/images/favfooddetail/ข้าวเหนียวมะม่วง_จานโปรด.webp",
         source: "",       // TODO: ใส่ URL แหล่งอ้างอิงข้อมูลประวัติ
         imageSource: "",  // TODO: ใส่ URL/เครดิตแหล่งที่มาของภาพ
         history: 'ข้าวเหนียวมะม่วง เป็นของหวานที่มีมานานในประเทศไทย คาดว่ามีมาตั้งแต่สมัยปลายอยุธยา และได้รับความนิยมต่อเนื่องมาจนถึงสมัยรัตนโกสินทร์ตอนต้น โดยมีบันทึกในบทประพันธ์ โคลงกาพย์เห่ชมเครื่องคาวหวาน ในรัชกาลที่ 2 แห่งกรุงรัตนโกสินทร์ (แต่ไม่ได้ระบุชื่อว่า "ข้าวเหนียวมะม่วง" อย่างชัดเจน)',

@@ -175,8 +175,145 @@ header.hero-header {
 }
 
 .header-content {
+  opacity: 1;
+  transform: none;
+  animation: hero-headline-enter 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.12s backwards;
+}
+
+@keyframes hero-headline-enter {
+  0% { opacity: 0; transform: translateY(48px) scale(0.955); filter: blur(9px); }
+  58% { opacity: 1; }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* Cinematic heat atmosphere aligned with the mortar and curry bowl. */
+.hero-ambient {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  contain: layout paint;
+}
+
+.hero-heat {
+  position: absolute;
+  inset: -2%;
+  z-index: 1;
+  background: url("../assets/images/หน้าแรก2.jpg") center bottom / cover no-repeat;
+  opacity: 0.42;
+  filter: blur(0.9px) saturate(1.09) contrast(1.04);
+  -webkit-mask-image: radial-gradient(ellipse 36% 34% at 70% 65%, #000 8%, rgba(0, 0, 0, 0.82) 43%, transparent 76%);
+  mask-image: radial-gradient(ellipse 36% 34% at 70% 65%, #000 8%, rgba(0, 0, 0, 0.82) 43%, transparent 76%);
+  transform-origin: 70% 65%;
+  animation: hero-heat-shimmer 2.8s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hero-heat-shimmer {
+  0% { transform: translate3d(-1px, 1px, 0) scale(1.018, 1.012) skewX(-0.22deg); }
+  45% { transform: translate3d(2px, -1px, 0) scale(1.021, 1.016) skewX(0.18deg); }
+  100% { transform: translate3d(-2px, -3px, 0) scale(1.017, 1.022) skewX(-0.12deg); }
+}
+
+.hero-firelight {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse 31% 30% at 72% 69%, rgba(255, 121, 28, 0.4), rgba(242, 143, 53, 0.14) 43%, transparent 76%),
+    radial-gradient(ellipse 22% 28% at 22% 48%, rgba(255, 157, 60, 0.3), rgba(235, 116, 27, 0.1) 48%, transparent 78%);
+  mix-blend-mode: screen;
+  opacity: 0.56;
+  transform-origin: 70% 69%;
+  animation: hero-firelight-flicker 3.6s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+@keyframes hero-firelight-flicker {
+  0%, 100% { opacity: 0.45; transform: scale(0.99); }
+  22% { opacity: 0.68; transform: scale(1.018); }
+  41% { opacity: 0.52; transform: scale(1.006); }
+  67% { opacity: 0.74; transform: scale(1.025); }
+  82% { opacity: 0.58; transform: scale(1.012); }
+}
+
+.hero-steam {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 3;
+  width: clamp(150px, 17vw, 270px);
+  height: clamp(300px, 46vh, 500px);
+  border-radius: 48% 52% 44% 56%;
+  background:
+    radial-gradient(ellipse 38% 24% at 42% 82%, rgba(255, 244, 224, 0.62), transparent 75%),
+    radial-gradient(ellipse 31% 22% at 61% 61%, rgba(255, 238, 211, 0.48), transparent 76%),
+    radial-gradient(ellipse 28% 20% at 39% 40%, rgba(255, 246, 232, 0.4), transparent 78%),
+    radial-gradient(ellipse 24% 17% at 58% 20%, rgba(255, 238, 217, 0.3), transparent 80%);
+  filter: blur(9px);
+  mix-blend-mode: screen;
   opacity: 0;
-  transform: translateY(30px);
+  animation: hero-steam-rise var(--duration) cubic-bezier(0.33, 0, 0.3, 1) var(--delay) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes hero-steam-rise {
+  0% { opacity: 0; transform: translate3d(0, 45px, 0) scale(0.72, 0.65) rotate(-8deg); }
+  13% { opacity: 0.88; }
+  56% { opacity: 0.68; }
+  82% { opacity: 0.38; }
+  100% { opacity: 0; transform: translate3d(var(--drift), -260px, 0) scale(1.28, 1.46) rotate(10deg); }
+}
+
+.hero-ember {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 4;
+  width: var(--size);
+  height: calc(var(--size) * 0.72);
+  border-radius: 65% 35% 58% 42%;
+  background: #ffbd58;
+  box-shadow: 0 0 7px 2px rgba(255, 131, 36, 0.72), 0 0 16px rgba(255, 184, 72, 0.45);
+  opacity: 0;
+  animation: hero-ember-drift var(--duration) cubic-bezier(0.28, 0.15, 0.38, 1) var(--delay) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes hero-ember-drift {
+  0% { opacity: 0; transform: translate3d(-16px, 28px, 0) rotate(0deg) scale(0.65); }
+  12% { opacity: 0.94; }
+  48% { opacity: 0.72; transform: translate3d(26px, -78px, 0) rotate(120deg) scale(1); }
+  78% { opacity: 0.48; }
+  100% { opacity: 0; transform: translate3d(-18px, -190px, 0) rotate(260deg) scale(0.45); }
+}
+
+.main-title {
+  animation: hero-title-glow 5.2s ease-in-out 1.65s infinite;
+}
+
+@keyframes hero-title-glow {
+  0%, 100% { text-shadow: 0 4px 10px rgba(32, 14, 3, 0.78), 0 10px 32px rgba(32, 14, 3, 0.48); }
+  50% { text-shadow: 0 4px 12px rgba(32, 14, 3, 0.8), 0 10px 34px rgba(32, 14, 3, 0.5), 0 0 22px rgba(246, 172, 71, 0.28); }
+}
+
+.hero-mobile-break { display: none; }
+
+.hero-motion-paused .hero-ambient * { animation-play-state: paused !important; }
+
+@media (max-width: 760px) {
+  .hero-heat { opacity: 0.3; filter: blur(0.5px) saturate(1.06); }
+  .hero-firelight { opacity: 0.48; }
+  .hero-steam { width: 150px; height: 320px; filter: blur(7px); }
+  .hero-steam:nth-of-type(n+4) { display: none; }
+  .hero-ember:nth-of-type(even) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-header .header-content { animation: none; opacity: 1; transform: none; }
+  .hero-ambient { display: none; }
+  .hero-ambient * { animation: none; }
+  .hero-header .main-title { animation: none; }
 }
 
 .main-title {
@@ -2128,7 +2265,7 @@ h4 {
 .herb-atmosphere {
   position: absolute;
   inset: -8%;
-  background: url('../assets/images/thai-herbs-atmosphere.png') center / cover no-repeat;
+  background: url('../assets/images/thai-herbs-atmosphere.webp') center / cover no-repeat;
   opacity: 0.2;
   filter: saturate(0.8) contrast(1.08);
   transform: scale(1.08);
@@ -3557,11 +3694,16 @@ header.hero-header::after {
 
   .header-content {
     top: -10vh;
+    width: calc(100% - 28px);
   }
 
   .main-title {
-    font-size: clamp(3.2rem, 15vw, 5.2rem);
+    font-size: clamp(2.75rem, 11vw, 4.2rem);
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
+
+  .hero-mobile-break { display: block; }
 
   .scroll-indicator {
     bottom: 1.5rem;
