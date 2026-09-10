@@ -2349,6 +2349,99 @@ h4 {
   transform: rotate(18deg);
 }
 
+/* Additional Thai aromatics in the scroll-parallax layer */
+.ginger-root {
+  top: 31%;
+  left: 3%;
+  width: clamp(100px, 11vw, 158px);
+  aspect-ratio: 3 / 2;
+  background: url('../assets/images/ginger-parallax.png') center / contain no-repeat;
+  opacity: 0.64;
+  filter: brightness(0.78) saturate(0.8) drop-shadow(0 10px 12px rgba(0, 0, 0, 0.45));
+  transform: rotate(-18deg);
+}
+
+.galangal-root {
+  top: 13%;
+  right: 17%;
+  width: 148px;
+  height: 31px;
+  border-radius: 65% 22% 28% 58%;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 17px, rgba(91, 44, 24, 0.32) 18px 21px),
+    linear-gradient(180deg, #e6bd83 0%, #bd7c52 55%, #72412f 100%);
+  box-shadow: inset 0 7px 9px rgba(255, 231, 196, 0.24), inset 0 -6px 10px rgba(75, 34, 25, 0.38);
+  transform: rotate(21deg);
+}
+
+.galangal-root::before {
+  content: '';
+  position: absolute;
+  width: 76px;
+  height: 23px;
+  left: 28px;
+  top: 20px;
+  border-radius: 60% 28% 30% 62%;
+  background: inherit;
+  transform: rotate(25deg);
+}
+
+.galangal-root::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 4px;
+  width: 17px;
+  height: 22px;
+  border-radius: 48%;
+  background: linear-gradient(90deg, #9e4f4c, #ddb09f);
+}
+
+.kaffir-lime-leaves {
+  left: 27%;
+  bottom: 11%;
+  width: 118px;
+  height: 70px;
+  background: linear-gradient(75deg, transparent 48%, rgba(214, 230, 149, 0.66) 49% 51%, transparent 52%);
+  transform: rotate(-24deg);
+}
+
+.kaffir-lime-leaves::before,
+.kaffir-lime-leaves::after {
+  content: '';
+  position: absolute;
+  width: 67px;
+  height: 38px;
+  border-radius: 100% 0 100% 0;
+  background:
+    linear-gradient(160deg, rgba(204, 231, 125, 0.35), transparent 38%),
+    linear-gradient(145deg, #477c36, #183e25 72%);
+  box-shadow: inset 0 0 0 1px rgba(206, 226, 144, 0.22);
+}
+
+.kaffir-lime-leaves::before {
+  left: 3px;
+  top: 28px;
+  transform: rotate(22deg);
+}
+
+.kaffir-lime-leaves::after {
+  right: 2px;
+  top: 2px;
+  transform: rotate(-158deg);
+}
+
+.garlic-bulb {
+  right: 5%;
+  bottom: 25%;
+  width: clamp(72px, 7vw, 102px);
+  aspect-ratio: 1;
+  background: url('../assets/images/garlic-parallax.png') center / contain no-repeat;
+  opacity: 0.6;
+  filter: brightness(0.72) sepia(0.12) drop-shadow(0 10px 12px rgba(0, 0, 0, 0.45));
+  transform: rotate(13deg);
+}
+
 .steam-wisp {
   position: absolute;
   width: 90px;
