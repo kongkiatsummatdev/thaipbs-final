@@ -28,10 +28,10 @@ Original JPG, JPEG, and PNG files remain in place as backups.
 | assets/images/favfooddetail/แกงไตปลา_จานโปรด.png | assets/images/favfooddetail/แกงไตปลา_จานโปรด.webp | 315 KB | 32 KB | 90.0% |
 | assets/images/future-food-biotech.png | assets/images/future-food-biotech.webp | 2380 KB | 211 KB | 91.1% |
 | assets/images/future-food-lab.png | assets/images/future-food-lab.webp | 2121 KB | 163 KB | 92.3% |
-| assets/images/Gemini_Generated_Image_2yleo62yleo62yle.jpg | assets/images/Gemini_Generated_Image_2yleo62yleo62yle.webp | 2810 KB | 390 KB | 86.1% |
-| assets/images/Gemini_Generated_Image_7e95l37e95l37e95.jpg | assets/images/Gemini_Generated_Image_7e95l37e95l37e95.webp | 2112 KB | 217 KB | 89.7% |
-| assets/images/Gemini_Generated_Image_qyg8p4qyg8p4qyg8.jpg | assets/images/Gemini_Generated_Image_qyg8p4qyg8p4qyg8.webp | 496 KB | 285 KB | 42.5% |
-| assets/images/Gemini_Generated_Image_w317j1w317j1w317.jpg | assets/images/Gemini_Generated_Image_w317j1w317j1w317.webp | 2105 KB | 169 KB | 92.0% |
+| assets/images/watermeal-khai-pham.jpg | assets/images/watermeal-khai-pham.webp | 2810 KB | 390 KB | 86.1% |
+| assets/images/thai-food-export-routes-map.jpg | assets/images/thai-food-export-routes-map.webp | 2112 KB | 217 KB | 89.7% |
+| assets/images/silkworm-pupae.jpg | assets/images/silkworm-pupae.webp | 496 KB | 285 KB | 42.5% |
+| assets/images/healthy-food-lifestyle.jpg | assets/images/healthy-food-lifestyle.webp | 2105 KB | 169 KB | 92.0% |
 | assets/images/Japan.jpg | assets/images/Japan.webp | 4033 KB | 916 KB | 77.3% |
 | assets/images/low-carbon-food.png | assets/images/low-carbon-food.webp | 902 KB | 81 KB | 91.0% |
 | assets/images/Paris.jpg | assets/images/Paris.webp | 3367 KB | 566 KB | 83.2% |
